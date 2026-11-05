@@ -261,14 +261,14 @@ nav a:focus-visible {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 30px;
+    padding: 13px 26px;
     border: 3px solid var(--ink);
-    border-radius: 999px;
+    border-radius: 10px;
     font-size: 16px;
     font-weight: 900;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    box-shadow: 6px 6px 0 var(--ink);
+    box-shadow: 5px 5px 0 var(--ink);
     text-decoration: none;
     cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
@@ -374,8 +374,8 @@ nav a:focus-visible {
     padding: 12px 28px;
     background: var(--lime);
     color: var(--ink);
-    border: 2px solid var(--ink);
-    border-radius: 999px;
+    border: 2.5px solid var(--ink);
+    border-radius: 10px;
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 0.5px;
@@ -721,6 +721,12 @@ nav a:focus-visible {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.project-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .project-meta {
