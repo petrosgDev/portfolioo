@@ -57,6 +57,13 @@ const updateActiveNav = () => {
 window.addEventListener("scroll", updateActiveNav, { passive: true });
 window.addEventListener("load", updateActiveNav);
 
+navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+        navLinks.forEach((l) => l.classList.remove("active"));
+        link.classList.add("active");
+    });
+});
+
 // ─── SKILLS SCATTER ON SCROLL & TOUCH WITH STACK CALCULATION ───
 const skillsSection = document.querySelector("#skills");
 const allSkillTiles = document.querySelectorAll(".skills-section .skill-tile");

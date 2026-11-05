@@ -109,21 +109,36 @@ nav a {
     padding: 5px 12px;
     font-size: 13px;
     font-weight: 700;
+    color: var(--ink);
     border: 2px solid transparent;
     border-radius: 999px;
-    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-nav a:hover,
+/* Active Nav Pill (Current Section) - Vibrant Lime Green */
 nav a.active {
     background-color: var(--lime);
     border-color: var(--ink);
-    box-shadow: 2px 2px 0 var(--ink);
+    box-shadow: 2.5px 2.5px 0 var(--ink);
     transform: translate(-1px, -1px);
 }
 
+/* Hover state on non-active links - Distinct White Pill (never looks same as active) */
+@media (hover: hover) {
+    nav a:not(.active):hover {
+        background-color: var(--white);
+        border-color: var(--ink);
+        box-shadow: 2px 2px 0 var(--ink);
+        transform: translate(-1px, -1px);
+    }
+
+    nav a.active:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 3.5px 3.5px 0 var(--ink);
+    }
+}
+
 nav a:focus-visible {
-    background-color: var(--lime);
     border-color: var(--ink);
     border-radius: 999px;
     outline: 2px solid var(--ink);
