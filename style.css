@@ -605,74 +605,53 @@ nav a:focus-visible {
 }
 
 .contact-chip {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 14px;
-    border: none;
-    background: transparent;
-    box-shadow: none;
-    font-weight: 800;
-    font-size: 19px;
-    color: var(--ink);
-    padding: 6px 0;
-    position: relative;
-    transition: transform 0.2s, color 0.2s;
-}
-
-.chip-label {
-    display: inline-block;
-    transition: opacity 0.2s, transform 0.2s;
-}
-
-.chip-detail {
-    display: none;
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--ink);
-    background-color: var(--lime);
+    gap: 16px;
+    width: 100%;
+    max-width: 320px;
+    padding: 14px 22px;
+    background-color: var(--white);
     border: 2px solid var(--ink);
-    border-radius: 6px;
-    padding: 3px 10px;
-    box-shadow: 3px 3px 0 var(--ink);
-    margin-left: 4px;
-    animation: popIn 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
 }
 
-@keyframes popIn {
-    from {
-        opacity: 0;
-        transform: scale(0.92) translateX(-6px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateX(0);
-    }
+.contact-chip:hover {
+    background-color: #f7f7f7;
+    transform: translateY(-2px);
 }
 
-.contact-chip:hover .chip-detail {
-    display: inline-flex;
-    align-items: center;
+.contact-chip.active,
+.contact-chip:active {
+    background-color: var(--lime);
 }
 
-.contact-chip--primary {
-    background: transparent;
+.contact-chip.active:hover {
+    background-color: var(--lime);
 }
 
 .contact-chip svg {
     flex-shrink: 0;
-    width: 22px;
-    height: 22px;
-    transition: transform 0.2s;
+    width: 20px;
+    height: 20px;
 }
 
-.contact-chip:hover {
-    transform: translateX(6px);
-    box-shadow: none;
-    background: transparent;
+.chip-label {
+    display: inline-block;
+    color: var(--ink);
+    font-size: 18px;
+    font-weight: 700;
 }
 
-.contact-chip:hover svg {
-    transform: scale(1.15);
+.chip-detail {
+    display: none;
 }
 
 /* ─── INBOX FORM (right column) ─── */

@@ -124,5 +124,13 @@ if (skillsSection) {
     skillsSection.addEventListener("touchstart", triggerNow, { passive: true });
 }
 
+// ─── CONTACT CHIPS INTERACTIVE ACTIVE/CLICK STATE ───
+const contactChips = document.querySelectorAll(".contact-chip");
+contactChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+        contactChips.forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+    });
+});
 
 
