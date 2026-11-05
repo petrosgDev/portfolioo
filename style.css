@@ -3,7 +3,7 @@
     --ink: #171717;
     --lime: #C8FF00;
     --orange: #FF6B35;
-    --white: #FFFFFF;
+    --white: #5E17EB;
 }
 
 * {
@@ -654,7 +654,7 @@ nav a:focus-visible {
 }
 
 .contact-header {
-    margin-bottom: 40px;
+    margin-bottom: 48px;
     padding-top: 0;
     text-align: center;
 }
@@ -666,13 +666,24 @@ nav a:focus-visible {
     line-height: 1;
     text-transform: uppercase;
     margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.header-envelope {
+    width: clamp(44px, 5.5vw, 68px);
+    height: auto;
+    filter: drop-shadow(4px 4px 0 var(--ink));
+    flex-shrink: 0;
 }
 
 /* ─── SIDE-BY-SIDE LAYOUT ─── */
 
 .contact-columns {
     display: grid;
-    grid-template-columns: minmax(280px, 310px) minmax(360px, 460px);
+    grid-template-columns: minmax(320px, 390px) minmax(360px, 470px);
     gap: 48px;
     justify-content: center;
     align-items: start;
@@ -692,9 +703,9 @@ nav a:focus-visible {
 .contact-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 22px;
-    padding-top: 10px;
+    align-items: stretch;
+    gap: 18px;
+    padding-top: 0;
     width: 100%;
 }
 
@@ -705,9 +716,11 @@ nav a:focus-visible {
         opacity: 0;
         transform: translateY(-20px) scale(0.94);
     }
+
     70% {
         transform: translateY(3px) scale(1.02);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -719,13 +732,11 @@ nav a:focus-visible {
     align-items: center;
     gap: 12px;
     width: 100%;
-    max-width: 300px;
     padding: 13px 18px;
-    background-color: var(--white);
     border: 2.5px solid var(--ink);
     border-radius: 14px;
     box-shadow: 4px 4px 0 var(--ink);
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 800;
     color: var(--ink);
     text-decoration: none;
@@ -733,7 +744,32 @@ nav a:focus-visible {
     cursor: pointer;
     position: relative;
     opacity: 0;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Colors matching the reference image */
+.chip--yellow {
+    background-color: #FAE997;
+}
+
+.chip--peach {
+    background-color: #FEC087;
+}
+
+.chip--coral {
+    background-color: #FEA273;
+}
+
+.chip--blue {
+    background-color: #CBE7EB;
+}
+
+.chip--mint {
+    background-color: #C7F5E8;
+}
+
+.chip--white {
+    background-color: #F8F5EE;
 }
 
 /* Staggered waterfall animation starting from Email down by down within 0.5s */
@@ -742,27 +778,36 @@ nav a:focus-visible {
     animation: chipCascadeIn 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-.contact-chip:nth-child(1) { animation-delay: 0.00s; }
-.contact-chip:nth-child(2) { animation-delay: 0.08s; }
-.contact-chip:nth-child(3) { animation-delay: 0.16s; }
-.contact-chip:nth-child(4) { animation-delay: 0.24s; }
-.contact-chip:nth-child(5) { animation-delay: 0.32s; }
-.contact-chip:nth-child(6) { animation-delay: 0.40s; }
+.contact-chip:nth-child(1) {
+    animation-delay: 0.00s;
+}
+
+.contact-chip:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+.contact-chip:nth-child(3) {
+    animation-delay: 0.16s;
+}
+
+.contact-chip:nth-child(4) {
+    animation-delay: 0.24s;
+}
+
+.contact-chip:nth-child(5) {
+    animation-delay: 0.32s;
+}
+
+.contact-chip:nth-child(6) {
+    animation-delay: 0.40s;
+}
 
 .contact-chip:hover,
 .contact-chip:active,
 .contact-chip:focus-visible,
 .contact-chip.active {
-    background-color: var(--lime);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--ink);
-}
-
-.contact-chip:hover .chip-detail,
-.contact-chip:active .chip-detail,
-.contact-chip:focus-visible .chip-detail,
-.contact-chip.active .chip-detail {
-    color: var(--ink);
+    transform: translate(-3px, -3px);
+    box-shadow: 6.5px 6.5px 0 var(--ink);
 }
 
 .contact-chip svg {
@@ -774,32 +819,28 @@ nav a:focus-visible {
 .chip-label {
     display: inline-block;
     color: var(--ink);
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 800;
 }
 
 .chip-detail {
     display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    color: #666;
+    font-size: 12px;
+    font-weight: 700;
+    color: #2b2b2b;
     margin-left: auto;
     white-space: nowrap;
-}
-
-.contact-chip.active .chip-detail {
-    color: var(--ink);
 }
 
 /* ─── INBOX FORM (right column) ─── */
 
 .inbox-box {
     background-color: var(--white);
-    border: 2.5px solid var(--ink);
-    border-radius: 16px;
+    border: 3px solid var(--ink);
+    border-radius: 18px;
     box-shadow: 7px 7px 0 var(--ink);
-    padding: 24px 26px;
-    max-width: 460px;
+    padding: 28px 28px;
+    max-width: 470px;
     width: 100%;
     margin: 0 auto;
 }
@@ -807,7 +848,7 @@ nav a:focus-visible {
 .contact-form {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 16px;
     margin-top: 0;
 }
 
@@ -827,14 +868,15 @@ nav a:focus-visible {
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 11px 14px;
-    border: 2px solid var(--ink);
-    border-radius: 10px;
+    padding: 12px 16px;
+    border: 2.5px solid var(--ink);
+    border-radius: 12px;
     background: var(--white);
+    box-shadow: 3.5px 3.5px 0 var(--ink);
     font: inherit;
     font-size: 15px;
     color: var(--ink);
-    transition: border-color 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .contact-form textarea {
@@ -845,21 +887,23 @@ nav a:focus-visible {
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: #888;
+    color: #777;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    outline: 2.5px solid var(--lime);
-    outline-offset: 1px;
+    outline: none;
+    transform: translate(-1px, -1px);
+    box-shadow: 4.5px 4.5px 0 var(--ink);
 }
 
 .contact-form button {
     align-self: stretch;
-    padding: 11px 22px;
-    border: 2px solid var(--ink);
-    border-radius: 10px;
-    font-size: 15px;
+    width: 100%;
+    padding: 13px 22px;
+    border: 2.5px solid var(--ink);
+    border-radius: 12px;
+    font-size: 16px;
     background: var(--lime);
     font-weight: 800;
     cursor: pointer;
