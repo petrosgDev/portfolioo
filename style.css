@@ -285,13 +285,13 @@ nav a:focus-visible {
 }
 
 .about-statement {
-    font-size: clamp(26px, 4.2vw, 48px);
+    font-size: clamp(30px, 4.8vw, 56px);
     font-weight: 900;
-    line-height: 1.35;
-    letter-spacing: -1.5px;
+    line-height: 1.28;
+    letter-spacing: -1.8px;
     text-transform: uppercase;
     color: var(--ink);
-    max-width: 1050px;
+    max-width: 1140px;
     text-align: center;
 }
 
@@ -309,6 +309,10 @@ nav a:focus-visible {
 
 .about-c-green {
     color: #16A34A;
+}
+
+.about-c-pink {
+    color: #EC4899;
 }
 
 /* ─── SKILLS ─── */
@@ -1018,8 +1022,8 @@ footer {
     }
 
     .about-statement {
-        font-size: clamp(20px, 6vw, 30px);
-        line-height: 1.35;
+        font-size: clamp(24px, 6.8vw, 36px);
+        line-height: 1.3;
         letter-spacing: -1px;
     }
 
