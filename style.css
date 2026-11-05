@@ -732,32 +732,63 @@ nav a:focus-visible {
     font-size: 14px;
 }
 
-/* ─── CONTACT FOOTER & FOOTER ─── */
-
-.contact-footer {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding-top: 24px;
-    border-top: 2px solid var(--ink);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
+/* ─── FOOTER ─── */
 
 footer {
-    border-top: 2px solid var(--ink);
-    background: var(--ink);
-    color: var(--white);
-    text-align: center;
+    border-top: 2.5px solid var(--ink);
+    background-color: var(--white);
+    color: var(--ink);
 }
 
-footer p {
+.footer-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 22px 20px;
-    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-container p {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+}
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.social-circle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--bg);
+    border: 2px solid var(--ink);
+    color: var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    text-decoration: none;
+    transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.social-circle-btn:hover {
+    background-color: var(--lime);
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 var(--ink);
+}
+
+.social-circle-btn svg {
+    width: 18px;
+    height: 18px;
+    display: block;
 }
 
 /* ─── RESPONSIVE ─── */
@@ -881,9 +912,11 @@ footer p {
         position: static;
     }
 
-    .contact-footer {
+    .footer-container {
         flex-direction: column;
-        gap: 8px;
+        justify-content: center;
+        text-align: center;
+        gap: 16px;
     }
 }
 
