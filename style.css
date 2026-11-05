@@ -580,14 +580,21 @@ nav a:focus-visible {
 
 .contact-columns {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: minmax(300px, 340px) minmax(360px, 460px);
+    gap: 60px;
+    justify-content: center;
     align-items: start;
 }
 
 .contact-left {
     position: sticky;
     top: 110px;
+}
+
+.contact-right {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .contact-content {
@@ -658,6 +665,7 @@ nav a:focus-visible {
     padding: 18px 22px;
     max-width: 440px;
     width: 100%;
+    margin: 78px auto 0;
 }
 
 .contact-form {
