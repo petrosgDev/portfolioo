@@ -193,12 +193,12 @@ nav a:focus-visible {
 }
 
 .hero h1 {
-    font-size: clamp(46px, 6.2vw, 84px);
+    font-size: clamp(38px, 5.2vw, 72px);
     font-weight: 900;
-    line-height: 0.98;
-    letter-spacing: -3px;
+    line-height: 1.0;
+    letter-spacing: -2.5px;
     max-width: 720px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     position: relative;
     z-index: 1;
 }
@@ -752,25 +752,31 @@ nav a:focus-visible {
 }
 
 .projects-more-wrapper {
+    width: 100%;
     margin-top: 48px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .projects-more-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
     gap: 10px;
     padding: 14px 32px;
     background-color: var(--white);
     color: var(--ink);
-    border: 2.5px solid var(--ink);
+    border: 3px solid var(--ink);
     border-radius: 999px;
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    box-shadow: 5px 5px 0 var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
     text-decoration: none;
     cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
@@ -1333,6 +1339,13 @@ footer {
     .skill-tile {
         width: 100%;
         height: 105px;
+    }
+
+    .projects-more-btn {
+        padding: 12px 20px;
+        font-size: 13px;
+        max-width: 100%;
+        gap: 8px;
     }
 
     .contact-section {
