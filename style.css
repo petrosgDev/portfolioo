@@ -599,39 +599,45 @@ nav a:focus-visible {
 .contact-content {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items: flex-start;
-    gap: 12px;
+    gap: 16px;
+    padding-top: 10px;
 }
 
 .contact-chip {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    width: 320px;
-    height: 48px;
-
-    padding: 8px 16px;
-    border: 2px solid var(--ink);
-    border-radius: 8px;
-    background: var(--white);
-    font-weight: 700;
-    font-size: 14px;
-    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    gap: 14px;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    font-weight: 800;
+    font-size: 19px;
+    color: var(--ink);
+    padding: 6px 0;
+    transition: transform 0.2s, color 0.2s;
 }
 
 .contact-chip--primary {
-    background: var(--lime);
+    background: transparent;
 }
 
 .contact-chip svg {
     flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    transition: transform 0.2s;
 }
 
 .contact-chip:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--ink);
-    background: var(--lime);
+    transform: translateX(6px);
+    box-shadow: none;
+    background: transparent;
+    color: #444;
+}
+
+.contact-chip:hover svg {
+    transform: scale(1.15);
 }
 
 /* ─── INBOX FORM (right column) ─── */
