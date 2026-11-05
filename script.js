@@ -131,6 +131,84 @@ if (skillsSection) {
     skillsSection.addEventListener("touchstart", triggerNow, { passive: true });
 }
 
+// ─── PROJECTS SCATTER ON SCROLL & TOUCH WITH STACK CALCULATION ───
+const projectsSection = document.querySelector("#projects");
+const allProjectCards = document.querySelectorAll(".projects-grid .project-card");
+const projectsGrid = document.querySelector(".projects-grid");
+
+function computeInitialProjectStack() {
+    if (!projectsGrid || !allProjectCards.length) return;
+    
+    // Find the exact visual center of the top row of the projects grid container
+    const gridRect = projectsGrid.getBoundingClientRect();
+    const centerX = gridRect.left + gridRect.width / 2;
+    const firstCardRect = allProjectCards[0].getBoundingClientRect();
+    const centerY = gridRect.top + firstCardRect.height / 2;
+    
+    allProjectCards.forEach((card, index) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenterX = cardRect.left + cardRect.width / 2;
+        const cardCenterY = cardRect.top + cardRect.height / 2;
+        
+        const deltaX = centerX - cardCenterX;
+        const deltaY = centerY - cardCenterY;
+        
+        // Natural card-deck scatter at the pile
+        card.style.setProperty("--project-stack-x", `${deltaX + (index % 4 - 1.5) * 4}px`);
+        card.style.setProperty("--project-stack-y", `${deltaY + (index % 3 - 1) * 3}px`);
+        card.style.setProperty("--project-stack-rot", `${(index % 7 - 3) * 3}deg`);
+        
+        // Staggered explosion delay matching skills
+        card.style.transitionDelay = `${index * 0.12}s`;
+    });
+
+    if (allProjectCards[0]) {
+        allProjectCards[0].classList.add("project-top-card");
+    }
+}
+
+// Compute pile positions once DOM loads and on resize
+window.addEventListener("load", computeInitialProjectStack);
+window.addEventListener("resize", computeInitialProjectStack);
+
+if (projectsSection) {
+    let hasExplodedProjects = false;
+    const projectObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !hasExplodedProjects) {
+                    hasExplodedProjects = true;
+                    setTimeout(() => {
+                        projectsSection.classList.add("is-active");
+                    }, 500);
+                }
+            });
+        },
+        { threshold: 0.20 }
+    );
+    projectObserver.observe(projectsSection);
+
+    // Also support instant touch/click on mobile or touch screens
+    const triggerProjectsNow = () => {
+        projectsSection.classList.add("is-active");
+    };
+    projectsSection.addEventListener("click", triggerProjectsNow);
+    projectsSection.addEventListener("touchstart", triggerProjectsNow, { passive: true });
+}
+
+// Direct button triggers for links
+document.querySelectorAll('a[href="#projects"]').forEach(btn => {
+    btn.addEventListener("click", () => {
+        if (projectsSection) {
+            projectsSection.classList.add("is-active");
+        }
+    });
+});
+
+if (window.location.hash === "#projects" && projectsSection) {
+    projectsSection.classList.add("is-active");
+}
+
 // ─── CONTACT CHIPS INTERACTIVE ACTIVE/CLICK STATE & CASCADE OBSERVER ───
 const contactSection = document.querySelector("#contact");
 if (contactSection) {
