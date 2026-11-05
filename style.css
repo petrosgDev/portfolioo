@@ -24,6 +24,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
     min-width: 320px;
+    overflow-x: hidden;
     cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, auto;
 }
 
@@ -295,6 +296,7 @@ nav a:focus-visible {
     max-width: 1200px;
     margin: 0 auto;
     padding: 80px 20px;
+    position: relative;
 }
 
 .about-section .section-header {
@@ -566,6 +568,7 @@ nav a:focus-visible {
     max-width: 1200px;
     margin: 0 auto;
     padding: 100px 20px;
+    position: relative;
 }
 
 .projects-section .section-header {
@@ -719,6 +722,7 @@ nav a:focus-visible {
     max-width: 1200px;
     margin: 0 auto;
     padding: 100px 20px 60px;
+    position: relative;
 }
 
 .contact-header {
@@ -990,6 +994,78 @@ nav a:focus-visible {
     font-size: 14px;
 }
 
+/* ─── NEO-BRUTALIST BORDER DOODLES & STICKERS ─── */
+
+.page-doodle {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 3;
+    display: block;
+    height: auto;
+}
+
+/* 1. Hero: subtle sparkle near the top-left border */
+.doodle-hero-sparkle {
+    top: 36px;
+    left: 20px;
+    width: 32px;
+    opacity: 0.95;
+    animation: doodleFloat 7s ease-in-out infinite alternate;
+}
+
+/* 2. About Me: pop starburst sticker at top-right border */
+.doodle-about-starburst {
+    top: 24px;
+    right: 28px;
+    width: 72px;
+    transform: rotate(-8deg);
+    filter: drop-shadow(4px 4px 0 var(--ink));
+}
+
+/* 3. About Me: small sparkle star at bottom-right border */
+.doodle-about-sparkle {
+    bottom: 30px;
+    right: 40px;
+    width: 26px;
+    opacity: 0.85;
+}
+
+/* 4. Skills: comic starburst sticker near the header border */
+.doodle-skills-starburst {
+    top: 48px;
+    left: 32px;
+    width: 68px;
+    transform: rotate(14deg);
+    filter: drop-shadow(4px 4px 0 var(--ink));
+}
+
+/* 5. Projects: sparkle star near top-right border of works */
+.doodle-projects-sparkle {
+    top: 42px;
+    right: 28px;
+    width: 34px;
+    transform: rotate(16deg);
+    opacity: 0.9;
+}
+
+/* 6. Contact: sparkle star near GET IN TOUCH header */
+.doodle-contact-sparkle {
+    top: 44px;
+    left: 36px;
+    width: 38px;
+    transform: rotate(-10deg);
+}
+
+@keyframes doodleFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-6px) rotate(8deg);
+    }
+}
+
 /* ─── FOOTER ─── */
 
 footer {
@@ -1058,6 +1134,21 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .doodle-about-starburst,
+    .doodle-skills-starburst {
+        width: 48px;
+    }
+
+    .doodle-hero-sparkle,
+    .doodle-projects-sparkle,
+    .doodle-contact-sparkle {
+        width: 24px;
+    }
+
+    .doodle-about-sparkle {
+        width: 20px;
+    }
+
     .hero {
         flex-direction: column;
         align-items: flex-start;
