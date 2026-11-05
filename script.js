@@ -150,10 +150,12 @@ if (contactSection) {
 
 const contactChips = document.querySelectorAll(".contact-chip");
 contactChips.forEach((chip) => {
-    chip.addEventListener("click", () => {
+    const highlightChip = () => {
         contactChips.forEach((c) => c.classList.remove("active"));
         chip.classList.add("active");
-    });
+    };
+    chip.addEventListener("click", highlightChip);
+    chip.addEventListener("touchstart", highlightChip, { passive: true });
 });
 
 

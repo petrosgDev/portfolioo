@@ -729,14 +729,20 @@ nav a:focus-visible {
 .contact-chip:nth-child(5) { animation-delay: 0.32s; }
 .contact-chip:nth-child(6) { animation-delay: 0.40s; }
 
-.contact-chip:hover {
+.contact-chip:hover,
+.contact-chip:active,
+.contact-chip:focus-visible,
+.contact-chip.active {
+    background-color: var(--lime);
     transform: translate(-2px, -2px);
     box-shadow: 6px 6px 0 var(--ink);
 }
 
-.contact-chip.active {
-    background-color: var(--lime);
-    box-shadow: 3px 3px 0 var(--ink);
+.contact-chip:hover .chip-detail,
+.contact-chip:active .chip-detail,
+.contact-chip:focus-visible .chip-detail,
+.contact-chip.active .chip-detail {
+    color: var(--ink);
 }
 
 .contact-chip svg {
