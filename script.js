@@ -60,25 +60,38 @@ window.addEventListener("load", updateActiveNav);
 // ─── SKILLS SCATTER ON SCROLL & TOUCH WITH STACK CALCULATION ───
 const skillsSection = document.querySelector("#skills");
 const allSkillTiles = document.querySelectorAll(".skills-section .skill-tile");
-const reactTile = document.querySelector('.skills-section .skill-tile');
+const skillsWrapper = document.querySelector(".skills-categories-wrapper");
 
 function computeInitialCardStack() {
-    if (!reactTile || !allSkillTiles.length) return;
-    const reactRect = reactTile.getBoundingClientRect();
+    if (!skillsWrapper || !allSkillTiles.length) return;
+    
+    // Find the exact visual center of the entire skills section container
+    const wrapperRect = skillsWrapper.getBoundingClientRect();
+    const centerX = wrapperRect.left + wrapperRect.width / 2;
+    const centerY = wrapperRect.top + wrapperRect.height / 2;
     
     allSkillTiles.forEach((tile, index) => {
         const tileRect = tile.getBoundingClientRect();
-        // Delta from target spot to the React tile stack position
-        const deltaX = reactRect.left - tileRect.left;
-        const deltaY = reactRect.top - tileRect.top;
+        // Calculate vector from tile's final resting place to center pile
+        const targetTileCenterX = tileRect.left + tileRect.width / 2;
+        const targetTileCenterY = tileRect.top + tileRect.height / 2;
         
-        // Slight stacked offset & random rotation so they look stacked like playing cards
-        tile.style.setProperty("--stack-x", `${deltaX + (index % 3) * 2}px`);
-        tile.style.setProperty("--stack-y", `${deltaY + (index % 3) * 2}px`);
-        tile.style.setProperty("--stack-rot", `${(index % 5 - 2) * 2.5}deg`);
-        // Staggered explosion delay for each card
-        tile.style.transitionDelay = `${index * 0.045}s`;
+        const deltaX = centerX - targetTileCenterX;
+        const deltaY = centerY - targetTileCenterY;
+        
+        // Slight natural card-deck scatter at the center
+        tile.style.setProperty("--stack-x", `${deltaX + (index % 4 - 1.5) * 4}px`);
+        tile.style.setProperty("--stack-y", `${deltaY + (index % 3 - 1) * 3}px`);
+        tile.style.setProperty("--stack-rot", `${(index % 7 - 3) * 4}deg`);
+        
+        // 4x slower staggered explosion delay for cinematic effect
+        tile.style.transitionDelay = `${index * 0.12}s`;
     });
+
+    // Make the first card in the list the top card on the center deck
+    if (allSkillTiles[0]) {
+        allSkillTiles[0].classList.add("stack-top-card");
+    }
 }
 
 // Compute pile positions once DOM loads and on resize
