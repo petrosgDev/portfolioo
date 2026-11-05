@@ -169,9 +169,9 @@ nav a:focus-visible {
     margin: 0 auto;
     padding: 28px 24px 60px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    gap: 0;
+    gap: 24px;
     position: relative;
     overflow: visible;
 }
@@ -195,8 +195,8 @@ nav a:focus-visible {
 .hero-headline {
     display: flex;
     flex-direction: column;
-    gap: clamp(6px, 1vw, 12px);
-    max-width: 840px;
+    gap: clamp(2px, 0.4vw, 5px);
+    max-width: 920px;
     margin-top: 0;
     margin-bottom: 24px;
     position: relative;
@@ -204,70 +204,42 @@ nav a:focus-visible {
 }
 
 .hero-line {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: clamp(8px, 1.2vw, 16px);
-    line-height: 0.95;
+    display: block;
+    line-height: 0.93;
+    font-weight: 900;
 }
 
-.word-i {
-    font-size: clamp(32px, 3.8vw, 50px);
-    font-weight: 900;
-    letter-spacing: -1px;
+.hero-line-1 {
+    font-size: clamp(46px, 5.8vw, 80px);
     color: var(--ink);
-}
-
-.word-engineer {
-    font-size: clamp(40px, 5vw, 68px);
-    font-weight: 900;
     letter-spacing: -2px;
-    color: var(--ink);
 }
 
-.word-digital {
-    font-size: clamp(48px, 6vw, 82px);
-    font-weight: 900;
-    letter-spacing: -2.5px;
-    color: #0284C7;
-}
-
-.word-experiences {
-    font-size: clamp(48px, 6vw, 82px);
-    font-weight: 900;
-    letter-spacing: -2.5px;
-    color: #FF6B35;
-}
-
-.badge-powered {
-    display: inline-flex;
-    align-items: center;
-    padding: 3px 12px;
-    background: var(--yellow);
-    color: var(--ink);
-    border: 2.5px solid var(--ink);
-    border-radius: 6px;
-    box-shadow: 3px 3px 0 var(--ink);
-    font-size: clamp(14px, 1.5vw, 20px);
-    font-weight: 900;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transform: rotate(-1.5deg);
-    margin-right: 2px;
-}
-
-.word-creativity {
-    font-size: clamp(34px, 4.2vw, 56px);
-    font-weight: 900;
+.hero-line-2 {
+    font-size: clamp(58px, 7.6vw, 105px);
     letter-spacing: -1.5px;
-    color: var(--ink);
 }
 
-.word-intelligence {
-    font-size: clamp(48px, 6.2vw, 84px);
-    font-weight: 900;
-    letter-spacing: -2.5px;
-    color: #16A34A;
+.hero-line-3 {
+    font-size: clamp(52px, 6.8vw, 94px);
+    letter-spacing: -2px;
+}
+
+.hero-line-4 {
+    font-size: clamp(46px, 5.8vw, 80px);
+    color: var(--ink);
+    letter-spacing: -1.5px;
+}
+
+.hero-line-5 {
+    font-size: clamp(42px, 5.2vw, 72px);
+    color: var(--ink);
+    letter-spacing: -2px;
+}
+
+.hero-line-6 {
+    font-size: clamp(46px, 5.8vw, 82px);
+    letter-spacing: -2px;
 }
 
 .hero h1 {
@@ -302,24 +274,24 @@ nav a:focus-visible {
 }
 
 .hero-image {
-    flex-shrink: 0;
-    width: clamp(460px, 42vw, 720px);
+    flex: 0 0 auto;
+    width: clamp(280px, 30vw, 460px);
     aspect-ratio: 1 / 1;
     background-color: transparent;
     overflow: visible;
-    margin-left: clamp(-180px, -13vw, -80px);
-    margin-top: clamp(20px, 2.5vw, 45px);
+    margin-left: 0;
+    margin-top: 0;
     position: relative;
     z-index: 2;
     pointer-events: none;
-    align-self: flex-start;
+    align-self: center;
 }
 
 .hero-image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    object-position: top center;
+    object-position: center;
     display: block;
 }
 
