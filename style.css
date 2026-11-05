@@ -208,7 +208,8 @@ nav a:focus-visible {
 }
 
 .btn-secondary {
-    background: transparent;
+    background: var(--white);
+    box-shadow: 5px 5px 0 var(--ink);
 }
 
 .hero-buttons a:hover {
