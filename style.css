@@ -169,9 +169,9 @@ nav a:focus-visible {
     margin: 0 auto;
     padding: 28px 24px 60px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 24px;
+    gap: 0;
     position: relative;
     overflow: visible;
 }
@@ -274,24 +274,24 @@ nav a:focus-visible {
 }
 
 .hero-image {
-    flex: 0 0 auto;
-    width: clamp(280px, 30vw, 460px);
+    flex-shrink: 0;
+    width: clamp(460px, 42vw, 720px);
     aspect-ratio: 1 / 1;
     background-color: transparent;
     overflow: visible;
-    margin-left: 0;
-    margin-top: 0;
+    margin-left: clamp(-180px, -13vw, -80px);
+    margin-top: clamp(20px, 2.5vw, 45px);
     position: relative;
     z-index: 2;
     pointer-events: none;
-    align-self: center;
+    align-self: flex-start;
 }
 
 .hero-image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    object-position: center;
+    object-position: top center;
     display: block;
 }
 
@@ -568,10 +568,10 @@ nav a:focus-visible {
     /* Default / Distributed State */
     transform: translateY(0) scale(1) rotate(var(--orig-rot, 0deg));
     opacity: 1;
-    /* 4x smoother and slower animation */
-    transition: transform 3.2s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.6s ease,
-        opacity 1.2s ease;
+    /* 2x faster animation (1.6s) */
+    transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.3s ease,
+        opacity 0.6s ease;
 }
 
 /* Initial stage (before scroll): all cards stacked in the exact center of the section */
@@ -687,12 +687,41 @@ nav a:focus-visible {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s;
+    will-change: transform, opacity;
+    /* Default / Distributed State */
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    /* Same animation style and speed as skills (1.6s) */
+    transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.3s ease,
+        opacity 0.6s ease;
 }
 
-.project-card:hover {
+/* Initial stage (before scroll): all project cards stacked at the top-right of the section */
+.projects-section:not(.is-active) .project-card {
+    transform: translate(var(--project-stack-x, 0px), var(--project-stack-y, 0px)) rotate(var(--project-stack-rot, 0deg)) scale(0.96) !important;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* The top card on the stack stays visible at the top-right */
+.projects-section:not(.is-active) .project-card.project-top-card {
+    opacity: 1 !important;
+    pointer-events: auto;
+    box-shadow: 9px 9px 0 var(--ink) !important;
+}
+
+/* Distributed state when section is active */
+.projects-section.is-active .project-card {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.projects-section.is-active .project-card:hover {
     transform: translate(-4px, -4px);
     box-shadow: 11px 11px 0 var(--ink);
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
 }
 
 .project-img-wrapper {

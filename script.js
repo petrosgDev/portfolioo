@@ -91,8 +91,8 @@ function computeInitialCardStack() {
         tile.style.setProperty("--stack-y", `${deltaY + (index % 3 - 1) * 3}px`);
         tile.style.setProperty("--stack-rot", `${(index % 7 - 3) * 4}deg`);
         
-        // 4x slower staggered explosion delay for cinematic effect
-        tile.style.transitionDelay = `${index * 0.12}s`;
+        // 2x faster staggered explosion delay
+        tile.style.transitionDelay = `${index * 0.06}s`;
     });
 
     // Make the first card in the list the top card on the center deck
@@ -112,10 +112,10 @@ if (skillsSection) {
             entries.forEach((entry) => {
                 if (entry.isIntersecting && !hasExploded) {
                     hasExploded = true;
-                    // Wait 0.5s as requested, then create categories & distribute cards!
+                    // Trigger 2x faster
                     setTimeout(() => {
                         skillsSection.classList.add("is-active");
-                    }, 500);
+                    }, 200);
                 }
             });
         },
@@ -129,6 +129,72 @@ if (skillsSection) {
     };
     skillsSection.addEventListener("click", triggerNow);
     skillsSection.addEventListener("touchstart", triggerNow, { passive: true });
+}
+
+// ─── PROJECTS SCATTER ON SCROLL FROM TOP-RIGHT ───
+const projectsSection = document.querySelector("#projects");
+const allProjectCards = document.querySelectorAll(".projects-section .project-card");
+const projectsGrid = document.querySelector(".projects-grid");
+
+function computeInitialProjectStack() {
+    if (!projectsGrid || !allProjectCards.length) return;
+    
+    // Exact visual center of the top-right position of the projects grid container
+    const gridRect = projectsGrid.getBoundingClientRect();
+    const firstCard = allProjectCards[0];
+    const cardWidth = firstCard.offsetWidth;
+    const cardHeight = firstCard.offsetHeight;
+    
+    const targetTopRightX = gridRect.right - (cardWidth / 2);
+    const targetTopRightY = gridRect.top + (cardHeight / 2);
+    
+    allProjectCards.forEach((card, index) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenterX = cardRect.left + cardRect.width / 2;
+        const cardCenterY = cardRect.top + cardRect.height / 2;
+        
+        const deltaX = targetTopRightX - cardCenterX;
+        const deltaY = targetTopRightY - cardCenterY;
+        
+        // Slight natural card-deck scatter at the top right
+        card.style.setProperty("--project-stack-x", `${deltaX + (index % 4 - 1.5) * 6}px`);
+        card.style.setProperty("--project-stack-y", `${deltaY + (index % 3 - 1) * 4}px`);
+        card.style.setProperty("--project-stack-rot", `${((index * 5) % 14) - 7}deg`);
+        
+        // Same animation speed & staggered delay matching skills
+        card.style.transitionDelay = `${index * 0.06}s`;
+    });
+
+    if (allProjectCards[0]) {
+        allProjectCards[0].classList.add("project-top-card");
+    }
+}
+
+window.addEventListener("load", computeInitialProjectStack);
+window.addEventListener("resize", computeInitialProjectStack);
+
+if (projectsSection) {
+    let hasExplodedProjects = false;
+    const projectObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && !hasExplodedProjects) {
+                    hasExplodedProjects = true;
+                    setTimeout(() => {
+                        projectsSection.classList.add("is-active");
+                    }, 200);
+                }
+            });
+        },
+        { threshold: 0.15 }
+    );
+    projectObserver.observe(projectsSection);
+
+    const triggerProjectsNow = () => {
+        projectsSection.classList.add("is-active");
+    };
+    projectsSection.addEventListener("click", triggerProjectsNow);
+    projectsSection.addEventListener("touchstart", triggerProjectsNow, { passive: true });
 }
 
 // ─── CONTACT CHIPS INTERACTIVE ACTIVE/CLICK STATE & CASCADE OBSERVER ───
