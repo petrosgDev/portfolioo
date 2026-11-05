@@ -597,11 +597,10 @@ nav a:focus-visible {
 
 .contact-columns {
     display: grid;
-    grid-template-columns: minmax(340px, 420px) minmax(360px, 460px);
-    gap: 50px;
+    grid-template-columns: minmax(280px, 310px) minmax(360px, 460px);
+    gap: 48px;
     justify-content: center;
     align-items: start;
-    padding-right: 40px;
 }
 
 .contact-left {
@@ -645,7 +644,7 @@ nav a:focus-visible {
     align-items: center;
     gap: 12px;
     width: 100%;
-    max-width: 410px;
+    max-width: 300px;
     padding: 13px 18px;
     background-color: var(--white);
     border: 2.5px solid var(--ink);
@@ -704,6 +703,11 @@ nav a:focus-visible {
     font-weight: 600;
     color: #666;
     margin-left: auto;
+    white-space: nowrap;
+}
+
+.contact-chip.active .chip-detail {
+    color: var(--ink);
 }
 
 /* ─── INBOX FORM (right column) ─── */
