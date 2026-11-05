@@ -70,7 +70,7 @@ const allSkillTiles = document.querySelectorAll(".skills-section .skill-tile");
 const skillsWrapper = document.querySelector(".skills-categories-wrapper");
 
 function computeInitialCardStack() {
-    if (!skillsWrapper || !allSkillTiles.length || !skillsSection) return;
+    if (!skillsWrapper || !allSkillTiles.length) return;
     
     // Find the exact visual center of the entire skills section container
     const wrapperRect = skillsWrapper.getBoundingClientRect();
@@ -91,163 +91,45 @@ function computeInitialCardStack() {
         tile.style.setProperty("--stack-y", `${deltaY + (index % 3 - 1) * 3}px`);
         tile.style.setProperty("--stack-rot", `${(index % 7 - 3) * 4}deg`);
         
-        // Fast, snappy staggered explosion delay (18ms per tile)
-        tile.style.transitionDelay = `${index * 0.018}s`;
+        // 4x slower staggered explosion delay for cinematic effect
+        tile.style.transitionDelay = `${index * 0.12}s`;
     });
 
+    // Make the first card in the list the top card on the center deck
     if (allSkillTiles[0]) {
         allSkillTiles[0].classList.add("stack-top-card");
     }
-
-    if (!skillsSection.classList.contains("is-active")) {
-        skillsSection.classList.add("is-stacked");
-    }
 }
 
-// ─── PROJECTS SCATTER ON SCROLL FROM TOP-RIGHT ───
-const projectsSection = document.querySelector("#projects");
-const allProjectCards = document.querySelectorAll(".projects-section .project-card");
-const projectsGrid = document.querySelector(".projects-grid");
+// Compute pile positions once DOM loads and on resize
+window.addEventListener("load", computeInitialCardStack);
+window.addEventListener("resize", computeInitialCardStack);
 
-function computeInitialProjectStack() {
-    if (!projectsGrid || !allProjectCards.length || !projectsSection) return;
-    
-    // Exact visual center of the top-right position of the projects grid container
-    const gridRect = projectsGrid.getBoundingClientRect();
-    const firstCard = allProjectCards[0];
-    const cardWidth = firstCard.offsetWidth || 400;
-    const cardHeight = firstCard.offsetHeight || 400;
-    
-    const targetTopRightX = gridRect.right - (cardWidth / 2);
-    const targetTopRightY = gridRect.top + (cardHeight / 2);
-    
-    allProjectCards.forEach((card, index) => {
-        const cardRect = card.getBoundingClientRect();
-        const cardCenterX = cardRect.left + cardRect.width / 2;
-        const cardCenterY = cardRect.top + cardRect.height / 2;
-        
-        const deltaX = targetTopRightX - cardCenterX;
-        const deltaY = targetTopRightY - cardCenterY;
-        
-        // Slight natural card-deck scatter at the top right
-        card.style.setProperty("--project-stack-x", `${deltaX + (index % 4 - 1.5) * 6}px`);
-        card.style.setProperty("--project-stack-y", `${deltaY + (index % 3 - 1) * 4}px`);
-        card.style.setProperty("--project-stack-rot", `${((index * 5) % 14) - 7}deg`);
-        
-        // Fast, snappy staggered explosion delay (25ms per card)
-        card.style.transitionDelay = `${index * 0.025}s`;
-    });
-
-    if (allProjectCards[0]) {
-        allProjectCards[0].classList.add("project-top-card");
-    }
-
-    if (!projectsSection.classList.contains("is-active")) {
-        projectsSection.classList.add("is-stacked");
-    }
-}
-
-function initStacks() {
-    computeInitialCardStack();
-    computeInitialProjectStack();
-    checkAndActivateSections();
-}
-
-function checkAndActivateSections() {
-    const vh = window.innerHeight || 800;
-    if (skillsSection && !skillsSection.classList.contains("is-active")) {
-        const r = skillsSection.getBoundingClientRect();
-        if (r.top < vh + 150 && r.bottom > -100) {
-            skillsSection.classList.remove("is-stacked");
-            skillsSection.classList.add("is-active");
-        }
-    }
-    if (projectsSection && !projectsSection.classList.contains("is-active")) {
-        const r = projectsSection.getBoundingClientRect();
-        if (r.top < vh + 200 && r.bottom > -100) {
-            projectsSection.classList.remove("is-stacked");
-            projectsSection.classList.add("is-active");
-        }
-    }
-}
-
-// Compute pile positions immediately on DOMContentLoaded and on window load/resize
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initStacks);
-} else {
-    initStacks();
-}
-window.addEventListener("load", initStacks);
-window.addEventListener("resize", initStacks);
-window.addEventListener("scroll", checkAndActivateSections, { passive: true });
-
-// Observers with generous rootMargin and low threshold for instant, seamless activation
 if (skillsSection) {
-    let hasExplodedSkills = false;
-    const skillsObserver = new IntersectionObserver(
+    let hasExploded = false;
+    const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting && !hasExplodedSkills) {
-                    hasExplodedSkills = true;
-                    skillsSection.classList.remove("is-stacked");
-                    skillsSection.classList.add("is-active");
+                if (entry.isIntersecting && !hasExploded) {
+                    hasExploded = true;
+                    // Wait 0.5s as requested, then create categories & distribute cards!
+                    setTimeout(() => {
+                        skillsSection.classList.add("is-active");
+                    }, 500);
                 }
             });
         },
-        { threshold: 0.02, rootMargin: "150px 0px" }
+        { threshold: 0.25 }
     );
-    skillsObserver.observe(skillsSection);
+    observer.observe(skillsSection);
 
-    const triggerSkillsNow = () => {
-        skillsSection.classList.remove("is-stacked");
+    // Also support instant touch/click on mobile or touch screens
+    const triggerNow = () => {
         skillsSection.classList.add("is-active");
     };
-    skillsSection.addEventListener("click", triggerSkillsNow);
-    skillsSection.addEventListener("touchstart", triggerSkillsNow, { passive: true });
+    skillsSection.addEventListener("click", triggerNow);
+    skillsSection.addEventListener("touchstart", triggerNow, { passive: true });
 }
-
-if (projectsSection) {
-    let hasExplodedProjects = false;
-    const projectObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting && !hasExplodedProjects) {
-                    hasExplodedProjects = true;
-                    projectsSection.classList.remove("is-stacked");
-                    projectsSection.classList.add("is-active");
-                }
-            });
-        },
-        { threshold: 0.02, rootMargin: "180px 0px" }
-    );
-    projectObserver.observe(projectsSection);
-
-    const triggerProjectsNow = () => {
-        projectsSection.classList.remove("is-stacked");
-        projectsSection.classList.add("is-active");
-    };
-    projectsSection.addEventListener("click", triggerProjectsNow);
-    projectsSection.addEventListener("touchstart", triggerProjectsNow, { passive: true });
-}
-
-// Immediate triggers for links
-document.querySelectorAll('a[href="#projects"]').forEach(btn => {
-    btn.addEventListener("click", () => {
-        if (projectsSection) {
-            projectsSection.classList.remove("is-stacked");
-            projectsSection.classList.add("is-active");
-        }
-    });
-});
-
-document.querySelectorAll('a[href="#skills"]').forEach(btn => {
-    btn.addEventListener("click", () => {
-        if (skillsSection) {
-            skillsSection.classList.remove("is-stacked");
-            skillsSection.classList.add("is-active");
-        }
-    });
-});
 
 // ─── CONTACT CHIPS INTERACTIVE ACTIVE/CLICK STATE & CASCADE OBSERVER ───
 const contactSection = document.querySelector("#contact");

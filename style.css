@@ -568,21 +568,21 @@ nav a:focus-visible {
     /* Default / Distributed State */
     transform: translateY(0) scale(1) rotate(var(--orig-rot, 0deg));
     opacity: 1;
-    /* Fast & snappy 0.45s animation */
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.2s ease,
-        opacity 0.25s ease;
+    /* 4x smoother and slower animation */
+    transition: transform 3.2s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.6s ease,
+        opacity 1.2s ease;
 }
 
 /* Initial stage (before scroll): all cards stacked in the exact center of the section */
-.skills-section.is-stacked:not(.is-active) .skill-tile {
+.skills-section:not(.is-active) .skill-tile {
     transform: translate(var(--stack-x, 0px), var(--stack-y, 0px)) rotate(var(--stack-rot, 0deg)) scale(0.96) !important;
-    opacity: 0.2;
+    opacity: 0;
     pointer-events: none;
 }
 
 /* The primary centered card stays visible on top of the pile! */
-.skills-section.is-stacked:not(.is-active) .skill-tile.stack-top-card {
+.skills-section:not(.is-active) .skill-tile.stack-top-card {
     opacity: 1 !important;
     pointer-events: auto;
     box-shadow: 8px 8px 0 var(--ink) !important;
@@ -590,9 +590,9 @@ nav a:focus-visible {
 
 /* Distributed state when section is active */
 .skills-section.is-active .skill-tile {
-    transform: translate(0, 0) scale(1) rotate(var(--orig-rot, 0deg)) !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
+    transform: translate(0, 0) scale(1) rotate(var(--orig-rot, 0deg));
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .skill-tile .skill-icon {
@@ -687,41 +687,12 @@ nav a:focus-visible {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    will-change: transform, opacity;
-    /* Default / Distributed State */
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 1;
-    /* Fast & snappy 0.45s animation matching skills */
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.2s ease,
-        opacity 0.25s ease;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s;
 }
 
-/* Initial stage (before scroll): all project cards stacked at the top-right of the section */
-.projects-section.is-stacked:not(.is-active) .project-card {
-    transform: translate(var(--project-stack-x, 0px), var(--project-stack-y, 0px)) rotate(var(--project-stack-rot, 0deg)) scale(0.96) !important;
-    opacity: 0.2;
-    pointer-events: none;
-}
-
-/* The top card on the stack stays visible at the top-right */
-.projects-section.is-stacked:not(.is-active) .project-card.project-top-card {
-    opacity: 1 !important;
-    pointer-events: auto;
-    box-shadow: 9px 9px 0 var(--ink) !important;
-}
-
-/* Distributed state when section is active */
-.projects-section.is-active .project-card {
-    transform: translate(0, 0) scale(1) rotate(0deg) !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-}
-
-.projects-section.is-active .project-card:hover {
-    transform: translate(-4px, -4px) !important;
-    box-shadow: 11px 11px 0 var(--ink) !important;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+.project-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 11px 11px 0 var(--ink);
 }
 
 .project-img-wrapper {
