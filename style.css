@@ -170,11 +170,23 @@ nav a:focus-visible {
 }
 
 .hero h1 {
-    font-size: clamp(32px, 7vw, 75px);
-    font-weight: 999px;
-    line-height: 0.95;
-    letter-spacing: -3px;
-    max-width: 900px;
+    font-size: clamp(40px, 8.5vw, 96px);
+    font-weight: 900;
+    line-height: 0.96;
+    letter-spacing: -3.5px;
+    max-width: 960px;
+}
+
+.hero-word-cyan {
+    color: #0284C7;
+}
+
+.hero-word-orange {
+    color: #FF6B35;
+}
+
+.hero-word-green {
+    color: #16A34A;
 }
 
 .hero-description {
@@ -937,7 +949,7 @@ footer {
     }
 
     .hero h1 {
-        font-size: clamp(42px, 10vw, 70px);
+        font-size: clamp(44px, 11vw, 82px);
         letter-spacing: -2px;
     }
 }
