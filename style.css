@@ -623,7 +623,7 @@ nav a:focus-visible {
     width: 100%;
 }
 
-/* ─── CONTACT CHIPS WITH SKILL COLORS, DETAILS & ANIMATION ─── */
+/* ─── CONTACT CHIPS WITH ANIMATION ─── */
 
 @keyframes chipCascadeIn {
     0% {
@@ -646,6 +646,7 @@ nav a:focus-visible {
     width: 100%;
     max-width: 410px;
     padding: 13px 18px;
+    background-color: var(--white);
     border: 2.5px solid var(--ink);
     border-radius: 14px;
     box-shadow: 4px 4px 0 var(--ink);
@@ -657,7 +658,7 @@ nav a:focus-visible {
     cursor: pointer;
     position: relative;
     opacity: 0;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
 /* Staggered waterfall animation starting from Email down by down within 0.5s */
@@ -673,40 +674,14 @@ nav a:focus-visible {
 .contact-chip:nth-child(5) { animation-delay: 0.32s; }
 .contact-chip:nth-child(6) { animation-delay: 0.40s; }
 
-/* Colors matching the skills section palette */
-.chip--lime {
-    background-color: var(--lime);
-}
-
-.chip--cyan {
-    background-color: #38DBFF;
-}
-
-.chip--orange {
-    background-color: #FF7844;
-}
-
-.chip--purple {
-    background-color: #D3A4FF;
-}
-
-.chip--yellow {
-    background-color: #FFDF00;
-}
-
-.chip--pink {
-    background-color: #FF80BF;
-}
-
 .contact-chip:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 7px 7px 0 var(--ink);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
 }
 
-.contact-chip:active,
 .contact-chip.active {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0 var(--ink);
+    background-color: var(--lime);
+    box-shadow: 3px 3px 0 var(--ink);
 }
 
 .contact-chip svg {
@@ -722,21 +697,8 @@ nav a:focus-visible {
     font-weight: 800;
 }
 
-/* Contact data badge on the right side of the free space */
 .chip-detail {
-    display: inline-flex;
-    align-items: center;
-    margin-left: auto;
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--ink);
-    background-color: var(--white);
-    border: 2px solid var(--ink);
-    border-radius: 8px;
-    padding: 3px 9px;
-    box-shadow: 2px 2px 0 var(--ink);
-    white-space: nowrap;
-    letter-spacing: -0.2px;
+    display: none;
 }
 
 /* ─── INBOX FORM (right column) ─── */
