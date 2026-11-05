@@ -325,16 +325,21 @@ nav a:focus-visible {
 
 .about-section .section-header {
     margin-bottom: 40px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .about-section .section-header h2 {
-    font-size: clamp(48px, 7vw, 84px);
+    font-size: clamp(44px, 6.5vw, 80px);
     font-weight: 900;
-    letter-spacing: -3px;
+    letter-spacing: -2.8px;
     line-height: 1;
     text-transform: uppercase;
     margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
 }
 
 .about-container {
@@ -427,16 +432,18 @@ nav a:focus-visible {
     margin: 0 auto 50px;
     display: flex;
     justify-content: center;
-    /* slightly shifted toward the left for dynamic balance */
-    padding-right: 60px;
 }
 
 .skills-section .section-header h2 {
-    font-size: clamp(48px, 7vw, 84px);
+    font-size: clamp(44px, 6.5vw, 80px);
     font-weight: 900;
-    letter-spacing: -3px;
+    letter-spacing: -2.8px;
     line-height: 1;
     text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
 }
 
 .skills-categories-wrapper {
@@ -599,8 +606,6 @@ nav a:focus-visible {
     margin-bottom: 45px;
     display: flex;
     justify-content: center;
-    /* slightly shifted toward the left for dynamic balance */
-    padding-right: 40px;
 }
 
 .projects-section .section-header h2 {
@@ -609,6 +614,10 @@ nav a:focus-visible {
     letter-spacing: -2.5px;
     line-height: 1;
     text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
 }
 
 .projects-grid {
@@ -798,9 +807,9 @@ nav a:focus-visible {
 }
 
 .contact-header h2 {
-    font-size: clamp(48px, 7vw, 84px);
+    font-size: clamp(44px, 6.5vw, 80px);
     font-weight: 900;
-    letter-spacing: -3px;
+    letter-spacing: -2.8px;
     line-height: 1;
     text-transform: uppercase;
     margin: 0;
@@ -810,8 +819,9 @@ nav a:focus-visible {
     gap: 16px;
 }
 
+.header-icon,
 .header-envelope {
-    width: clamp(44px, 5.5vw, 68px);
+    width: clamp(40px, 5.2vw, 64px);
     height: auto;
     filter: drop-shadow(4px 4px 0 var(--ink));
     flex-shrink: 0;
@@ -1215,6 +1225,12 @@ footer {
     .hero h1 {
         font-size: clamp(38px, 10vw, 60px);
         letter-spacing: -2px;
+    }
+
+    .header-icon,
+    .header-envelope {
+        width: clamp(28px, 6.5vw, 42px);
+        filter: drop-shadow(3px 3px 0 var(--ink));
     }
 }
 
