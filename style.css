@@ -1,7 +1,8 @@
 :root {
     --bg: #F5F1E8;
     --ink: #171717;
-    --lime: #C8FF00;
+    --primary: #FFE600;
+    --lime: #FFE600;
     --orange: #FF6B35;
     --white: #FFFFFF;
 }
@@ -513,8 +514,9 @@ nav a:focus-visible {
     background-color: #38DBFF;
 }
 
-.tile--lime {
-    background-color: var(--lime);
+.tile--lime,
+.tile--mint {
+    background-color: #38D9A9;
 }
 
 .tile--orange {
