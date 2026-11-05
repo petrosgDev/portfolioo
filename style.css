@@ -652,17 +652,17 @@ nav a:focus-visible {
 .inbox-box {
     background-color: var(--white);
     border: 2.5px solid var(--ink);
-    border-radius: 14px;
-    box-shadow: 6px 6px 0 var(--ink);
-    padding: 24px 26px;
-    max-width: 460px;
+    border-radius: 16px;
+    box-shadow: 7px 7px 0 var(--ink);
+    padding: 18px 22px;
+    max-width: 440px;
     width: 100%;
 }
 
 .contact-form {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 8px;
     margin-top: 0;
 }
 
@@ -670,11 +670,11 @@ nav a:focus-visible {
     display: flex;
     min-width: 0;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 
 .contact-form label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
     color: var(--ink);
 }
@@ -682,18 +682,19 @@ nav a:focus-visible {
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 11px 14px;
+    padding: 7px 12px;
     border: 2px solid var(--ink);
-    border-radius: 10px;
+    border-radius: 9px;
     background: var(--white);
     font: inherit;
-    font-size: 15px;
+    font-size: 14px;
     color: var(--ink);
     transition: border-color 0.15s ease;
 }
 
 .contact-form textarea {
-    min-height: 110px;
+    min-height: 60px;
+    height: 65px;
     resize: vertical;
 }
 
@@ -710,21 +711,21 @@ nav a:focus-visible {
 
 .contact-form button {
     align-self: flex-start;
-    padding: 11px 22px;
+    padding: 8px 18px;
     border: 2px solid var(--ink);
-    border-radius: 10px;
-    font-size: 15px;
+    border-radius: 9px;
+    font-size: 14px;
     background: var(--lime);
     font-weight: 800;
     cursor: pointer;
-    box-shadow: 4px 4px 0 var(--ink);
+    box-shadow: 3.5px 3.5px 0 var(--ink);
     transition: transform 0.15s, box-shadow 0.15s;
-    margin-top: 4px;
+    margin-top: 2px;
 }
 
 .contact-form button:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--ink);
+    box-shadow: 5px 5px 0 var(--ink);
 }
 
 .form-note {
