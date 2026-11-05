@@ -271,34 +271,35 @@
 
                 <!-- RIGHT: Inbox form -->
                 <div class="contact-right">
-                    <div class="inbox-header">
+                    <div class="inbox-box">
+                        <div class="inbox-header">
+                            <h3>Send Me a Message</h3>
+                            <p>Have an idea or opportunity? Send me a message.</p>
+                        </div>
 
-                        <h3>Send Me a Message</h3>
-                        <p>Have an idea or opportunity? Send me a message.</p>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" autocomplete="name" placeholder="Enter your name"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" autocomplete="email"
+                                    placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+                            </div>
+                            <div class="form-group form-group-wide">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Write your message..."
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message ↗</button>
+                        </form>
                     </div>
-
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" autocomplete="name" placeholder="Enter your name"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" autocomplete="email"
-                                placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
-                        </div>
-                        <div class="form-group form-group-wide">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="6" placeholder="Write your message..."
-                                required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message ↗</button>
-                    </form>
                 </div>
             </div>
         </section>
