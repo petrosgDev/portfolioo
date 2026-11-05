@@ -589,24 +589,24 @@ nav a:focus-visible {
 /* ─── PROJECTS ─── */
 
 .projects-section {
-    max-width: 1320px;
+    max-width: 1092px;
     margin: 0 auto;
-    padding: 100px 20px;
+    padding: 90px 20px;
     position: relative;
 }
 
 .projects-section .section-header {
-    margin-bottom: 50px;
+    margin-bottom: 45px;
     display: flex;
     justify-content: center;
     /* slightly shifted toward the left for dynamic balance */
-    padding-right: 60px;
+    padding-right: 40px;
 }
 
 .projects-section .section-header h2 {
-    font-size: clamp(48px, 7vw, 84px);
+    font-size: clamp(42px, 6vw, 76px);
     font-weight: 900;
-    letter-spacing: -3px;
+    letter-spacing: -2.5px;
     line-height: 1;
     text-transform: uppercase;
 }
@@ -614,14 +614,16 @@ nav a:focus-visible {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 36px;
+    gap: 32px;
+    max-width: 1052px;
+    margin: 0 auto;
 }
 
 .project-card {
     border: 3.5px solid var(--ink);
-    border-radius: 20px;
+    border-radius: 18px;
     background-color: var(--white);
-    box-shadow: 8px 8px 0 var(--ink);
+    box-shadow: 7px 7px 0 var(--ink);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -630,12 +632,12 @@ nav a:focus-visible {
 
 .project-card:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0 var(--ink);
+    box-shadow: 11px 11px 0 var(--ink);
 }
 
 .project-img-wrapper {
     width: 100%;
-    height: 275px;
+    height: 234px;
     border-bottom: 3.5px solid var(--ink);
     overflow: hidden;
     background-color: #eee;
@@ -654,18 +656,18 @@ nav a:focus-visible {
 }
 
 .project-body {
-    padding: 28px 30px;
+    padding: 20px 22px;
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
 .project-top {
-    margin-bottom: 14px;
+    margin-bottom: 10px;
 }
 
 .project-number {
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 900;
     letter-spacing: 2px;
     color: #666;
@@ -673,39 +675,39 @@ nav a:focus-visible {
 }
 
 .project-card h3 {
-    font-size: 26px;
+    font-size: 23px;
     font-weight: 900;
-    margin-bottom: 12px;
+    margin-bottom: 9px;
     letter-spacing: -0.5px;
     line-height: 1.25;
 }
 
 .project-card p {
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 12px;
     color: #333;
 }
 
 .project-stack {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 24px;
+    gap: 6px;
+    margin-bottom: 15px;
 }
 
 .project-stack span {
     background-color: var(--lime);
     border: 2px solid var(--ink);
     border-radius: 6px;
-    padding: 4px 8px;
-    font-size: 12px;
+    padding: 3px 8px;
+    font-size: 11.5px;
     font-weight: bold;
 }
 
 .project-footer-row {
     margin-top: auto;
-    padding-top: 18px;
+    padding-top: 14px;
     border-top: 2.5px solid var(--ink);
     display: flex;
     justify-content: space-between;
@@ -713,7 +715,7 @@ nav a:focus-visible {
 }
 
 .project-meta {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 800;
     color: #555;
     text-transform: uppercase;
@@ -724,11 +726,11 @@ nav a:focus-visible {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 16px;
+    padding: 7px 14px;
     border: 2px solid var(--ink);
     border-radius: 8px;
     background: var(--lime);
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 800;
     color: var(--ink);
     box-shadow: 3px 3px 0 var(--ink);
