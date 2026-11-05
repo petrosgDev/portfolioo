@@ -81,7 +81,7 @@ header {
 nav {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 16px 20px;
+    padding: 8px 20px 4px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -167,9 +167,9 @@ nav a:focus-visible {
 .hero {
     max-width: 1360px;
     margin: 0 auto;
-    padding: 20px 24px 70px;
+    padding: 28px 24px 60px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 0;
     position: relative;
@@ -177,10 +177,10 @@ nav a:focus-visible {
 }
 
 .hero-content {
-    flex: 1 1 55%;
+    flex: 1 1 58%;
     min-width: 0;
     position: relative;
-    padding-top: 10px;
+    padding-top: 0;
 }
 
 .hero-label {
@@ -192,12 +192,91 @@ nav a:focus-visible {
     padding-top: 0;
 }
 
+.hero-headline {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1vw, 12px);
+    max-width: 840px;
+    margin-top: 0;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 5;
+}
+
+.hero-line {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: clamp(8px, 1.2vw, 16px);
+    line-height: 0.95;
+}
+
+.word-i {
+    font-size: clamp(32px, 3.8vw, 50px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: var(--ink);
+}
+
+.word-engineer {
+    font-size: clamp(40px, 5vw, 68px);
+    font-weight: 900;
+    letter-spacing: -2px;
+    color: var(--ink);
+}
+
+.word-digital {
+    font-size: clamp(48px, 6vw, 82px);
+    font-weight: 900;
+    letter-spacing: -2.5px;
+    color: #0284C7;
+}
+
+.word-experiences {
+    font-size: clamp(48px, 6vw, 82px);
+    font-weight: 900;
+    letter-spacing: -2.5px;
+    color: #FF6B35;
+}
+
+.badge-powered {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 12px;
+    background: var(--yellow);
+    color: var(--ink);
+    border: 2.5px solid var(--ink);
+    border-radius: 6px;
+    box-shadow: 3px 3px 0 var(--ink);
+    font-size: clamp(14px, 1.5vw, 20px);
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transform: rotate(-1.5deg);
+    margin-right: 2px;
+}
+
+.word-creativity {
+    font-size: clamp(34px, 4.2vw, 56px);
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    color: var(--ink);
+}
+
+.word-intelligence {
+    font-size: clamp(48px, 6.2vw, 84px);
+    font-weight: 900;
+    letter-spacing: -2.5px;
+    color: #16A34A;
+}
+
 .hero h1 {
     font-size: clamp(38px, 5.2vw, 72px);
     font-weight: 900;
     line-height: 1.0;
     letter-spacing: -2.5px;
-    max-width: 720px;
+    max-width: 840px;
+    margin-top: 0;
     margin-bottom: 24px;
     position: relative;
     z-index: 1;
@@ -229,11 +308,11 @@ nav a:focus-visible {
     background-color: transparent;
     overflow: visible;
     margin-left: clamp(-180px, -13vw, -80px);
-    margin-top: clamp(55px, 6vw, 95px);
+    margin-top: clamp(20px, 2.5vw, 45px);
     position: relative;
     z-index: 2;
     pointer-events: none;
-    align-self: center;
+    align-self: flex-start;
 }
 
 .hero-image img {
@@ -251,7 +330,7 @@ nav a:focus-visible {
     flex-wrap: wrap;
     align-items: center;
     gap: 20px;
-    margin-top: 32px;
+    margin-top: 38px;
     position: relative;
     z-index: 15;
     pointer-events: auto;
@@ -261,14 +340,14 @@ nav a:focus-visible {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 13px 26px;
+    padding: 13px 28px;
     border: 3px solid var(--ink);
-    border-radius: 10px;
+    border-radius: 999px;
     font-size: 16px;
     font-weight: 900;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    box-shadow: 5px 5px 0 var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
     text-decoration: none;
     cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
@@ -1095,7 +1174,7 @@ nav a:focus-visible {
 
 /* 1. Hero: subtle sparkle near the top-left border */
 .doodle-hero-sparkle {
-    top: 36px;
+    top: 14px;
     left: 20px;
     width: 32px;
     opacity: 0.95;
