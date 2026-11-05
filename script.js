@@ -124,7 +124,23 @@ if (skillsSection) {
     skillsSection.addEventListener("touchstart", triggerNow, { passive: true });
 }
 
-// ─── CONTACT CHIPS INTERACTIVE ACTIVE/CLICK STATE ───
+// ─── CONTACT CHIPS INTERACTIVE ACTIVE/CLICK STATE & CASCADE OBSERVER ───
+const contactSection = document.querySelector("#contact");
+if (contactSection) {
+    const contactObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    contactSection.classList.add("is-active");
+                    contactObserver.unobserve(contactSection);
+                }
+            });
+        },
+        { threshold: 0.15 }
+    );
+    contactObserver.observe(contactSection);
+}
+
 const contactChips = document.querySelectorAll(".contact-chip");
 contactChips.forEach((chip) => {
     chip.addEventListener("click", () => {

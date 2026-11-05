@@ -581,10 +581,11 @@ nav a:focus-visible {
 
 .contact-columns {
     display: grid;
-    grid-template-columns: minmax(300px, 340px) minmax(360px, 460px);
-    gap: 60px;
+    grid-template-columns: minmax(340px, 420px) minmax(360px, 460px);
+    gap: 50px;
     justify-content: center;
     align-items: start;
+    padding-right: 40px;
 }
 
 .contact-left {
@@ -602,41 +603,95 @@ nav a:focus-visible {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 14px;
     padding-top: 10px;
+    width: 100%;
+}
+
+/* ─── CONTACT CHIPS WITH SKILL COLORS, DETAILS & ANIMATION ─── */
+
+@keyframes chipCascadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.94);
+    }
+    70% {
+        transform: translateY(3px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .contact-chip {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     width: 100%;
-    max-width: 320px;
-    padding: 14px 22px;
-    background-color: var(--white);
-    border: 2px solid var(--ink);
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: 700;
+    max-width: 410px;
+    padding: 13px 18px;
+    border: 2.5px solid var(--ink);
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--ink);
+    font-size: 17px;
+    font-weight: 800;
     color: var(--ink);
     text-decoration: none;
     box-sizing: border-box;
     cursor: pointer;
-    transition: background-color 0.15s ease, transform 0.15s ease;
+    position: relative;
+    opacity: 0;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Staggered waterfall animation starting from Email down by down within 0.5s */
+.contact-section.is-active .contact-chip,
+.contact-chip {
+    animation: chipCascadeIn 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.contact-chip:nth-child(1) { animation-delay: 0.00s; }
+.contact-chip:nth-child(2) { animation-delay: 0.08s; }
+.contact-chip:nth-child(3) { animation-delay: 0.16s; }
+.contact-chip:nth-child(4) { animation-delay: 0.24s; }
+.contact-chip:nth-child(5) { animation-delay: 0.32s; }
+.contact-chip:nth-child(6) { animation-delay: 0.40s; }
+
+/* Colors matching the skills section palette */
+.chip--lime {
+    background-color: var(--lime);
+}
+
+.chip--cyan {
+    background-color: #38DBFF;
+}
+
+.chip--orange {
+    background-color: #FF7844;
+}
+
+.chip--purple {
+    background-color: #D3A4FF;
+}
+
+.chip--yellow {
+    background-color: #FFDF00;
+}
+
+.chip--pink {
+    background-color: #FF80BF;
 }
 
 .contact-chip:hover {
-    background-color: #f7f7f7;
-    transform: translateY(-2px);
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0 var(--ink);
 }
 
-.contact-chip.active,
-.contact-chip:active {
-    background-color: var(--lime);
-}
-
-.contact-chip.active:hover {
-    background-color: var(--lime);
+.contact-chip:active,
+.contact-chip.active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
 }
 
 .contact-chip svg {
@@ -648,12 +703,25 @@ nav a:focus-visible {
 .chip-label {
     display: inline-block;
     color: var(--ink);
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 17px;
+    font-weight: 800;
 }
 
+/* Contact data badge on the right side of the free space */
 .chip-detail {
-    display: none;
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--ink);
+    background-color: var(--white);
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    padding: 3px 9px;
+    box-shadow: 2px 2px 0 var(--ink);
+    white-space: nowrap;
+    letter-spacing: -0.2px;
 }
 
 /* ─── INBOX FORM (right column) ─── */
@@ -663,16 +731,33 @@ nav a:focus-visible {
     border: 2.5px solid var(--ink);
     border-radius: 16px;
     box-shadow: 7px 7px 0 var(--ink);
-    padding: 18px 22px;
-    max-width: 440px;
+    padding: 24px 26px;
+    max-width: 460px;
     width: 100%;
-    margin: 78px auto 0;
+    max-height: 480px;
+    overflow-y: auto;
+    margin: 105px auto 0;
+}
+
+/* Smooth neo-brutalist scrollbar inside inbox box */
+.inbox-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.inbox-box::-webkit-scrollbar-track {
+    background: #f7f4ee;
+    border-radius: 4px;
+}
+
+.inbox-box::-webkit-scrollbar-thumb {
+    background: var(--ink);
+    border-radius: 4px;
 }
 
 .contact-form {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 14px;
     margin-top: 0;
 }
 
@@ -680,11 +765,11 @@ nav a:focus-visible {
     display: flex;
     min-width: 0;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .contact-form label {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 800;
     color: var(--ink);
 }
@@ -692,19 +777,19 @@ nav a:focus-visible {
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 7px 12px;
+    padding: 11px 14px;
     border: 2px solid var(--ink);
-    border-radius: 9px;
+    border-radius: 10px;
     background: var(--white);
     font: inherit;
-    font-size: 14px;
+    font-size: 15px;
     color: var(--ink);
     transition: border-color 0.15s ease;
 }
 
 .contact-form textarea {
-    min-height: 60px;
-    height: 65px;
+    min-height: 95px;
+    height: 105px;
     resize: vertical;
 }
 
@@ -721,16 +806,16 @@ nav a:focus-visible {
 
 .contact-form button {
     align-self: flex-start;
-    padding: 8px 18px;
+    padding: 11px 22px;
     border: 2px solid var(--ink);
-    border-radius: 9px;
-    font-size: 14px;
+    border-radius: 10px;
+    font-size: 15px;
     background: var(--lime);
     font-weight: 800;
     cursor: pointer;
-    box-shadow: 3.5px 3.5px 0 var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
     transition: transform 0.15s, box-shadow 0.15s;
-    margin-top: 2px;
+    margin-top: 4px;
 }
 
 .contact-form button:hover {
