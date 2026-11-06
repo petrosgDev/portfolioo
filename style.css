@@ -1294,8 +1294,8 @@ footer {
 
 @media (max-width: 768px) {
     header {
-        background-color: var(--bg);
-        border-bottom: 2.5px solid var(--ink);
+        background: transparent;
+        border-bottom: none;
     }
 
     nav {
@@ -1355,36 +1355,21 @@ footer {
         border-radius: 2px;
     }
 
-    /* Left-side Navigation Drawer with transparent container & individual white card items */
+    /* Right-side Navigation Drawer with no backdrop overlay & individual white card items */
     .nav-drawer-backdrop {
-        display: block;
-        position: fixed;
-        inset: 0;
-        background: rgba(23, 23, 23, 0.65);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        z-index: 998;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    .nav-drawer-backdrop.is-open {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
+        display: none !important;
     }
 
     .nav-menu-drawer {
-        display: flex;
+        display: none;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-end;
         position: fixed;
         top: 0;
-        left: 0;
+        right: 0;
+        left: auto;
         bottom: 0;
-        width: 270px;
+        width: 260px;
         max-width: 80vw;
         height: 100vh;
         height: 100dvh;
@@ -1392,41 +1377,43 @@ footer {
         border: none;
         box-shadow: none;
         z-index: 999;
-        padding: 24px 20px;
+        padding: 14px 16px 24px 16px;
         box-sizing: border-box;
-        overflow-y: auto;
-        pointer-events: none;
-        visibility: hidden;
-        transition: visibility 0.35s ease;
+        overflow: hidden;
     }
 
     .nav-menu-drawer.is-open {
-        visibility: visible;
-        pointer-events: auto;
+        display: flex;
+    }
+
+    @keyframes menuCardFlow {
+        from {
+            opacity: 0;
+            transform: translateX(32px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 
     .drawer-header {
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: flex-end;
         padding-bottom: 0;
-        margin-bottom: 18px;
+        margin-bottom: 12px;
         border-bottom: none;
-        opacity: 0;
-        transform: translateX(-24px);
-        transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.18, 0.9, 0.2, 1);
     }
 
     .nav-menu-drawer.is-open .drawer-header {
-        opacity: 1;
-        transform: translateX(0);
-        transition-delay: 0.02s;
+        animation: menuCardFlow 0.3s cubic-bezier(0.18, 0.9, 0.2, 1) both;
     }
 
     .drawer-close-btn {
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1451,7 +1438,7 @@ footer {
     .nav-menu-drawer ul {
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 12px;
         width: 100%;
         padding: 0;
         margin: 0;
@@ -1460,23 +1447,18 @@ footer {
 
     .nav-menu-drawer ul li {
         width: 100%;
-        opacity: 0;
-        transform: translateX(-40px);
-        transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.18, 0.9, 0.2, 1);
-        will-change: transform, opacity;
     }
 
-    /* Staggered flow animation starting from Home to Get in Touch */
+    /* Staggered flow animation from Home to Get in Touch */
     .nav-menu-drawer.is-open ul li {
-        opacity: 1;
-        transform: translateX(0);
+        animation: menuCardFlow 0.35s cubic-bezier(0.18, 0.9, 0.2, 1) both;
     }
 
-    .nav-menu-drawer.is-open ul li:nth-child(1) { transition-delay: 0.06s; } /* Home */
-    .nav-menu-drawer.is-open ul li:nth-child(2) { transition-delay: 0.12s; } /* About */
-    .nav-menu-drawer.is-open ul li:nth-child(3) { transition-delay: 0.18s; } /* Skills */
-    .nav-menu-drawer.is-open ul li:nth-child(4) { transition-delay: 0.24s; } /* Projects */
-    .nav-menu-drawer.is-open ul li:nth-child(5) { transition-delay: 0.30s; } /* Get in Touch */
+    .nav-menu-drawer.is-open ul li:nth-child(1) { animation-delay: 0.04s; } /* Home */
+    .nav-menu-drawer.is-open ul li:nth-child(2) { animation-delay: 0.09s; } /* About */
+    .nav-menu-drawer.is-open ul li:nth-child(3) { animation-delay: 0.14s; } /* Skills */
+    .nav-menu-drawer.is-open ul li:nth-child(4) { animation-delay: 0.19s; } /* Projects */
+    .nav-menu-drawer.is-open ul li:nth-child(5) { animation-delay: 0.24s; } /* Get in Touch */
 
     .nav-menu-drawer ul a {
         display: block;
@@ -1492,6 +1474,7 @@ footer {
         border-radius: 12px;
         box-shadow: 3.5px 3.5px 0 var(--ink);
         box-sizing: border-box;
+        text-align: left;
         transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
     }
 
@@ -1524,7 +1507,7 @@ footer {
         height: auto;
         aspect-ratio: 1 / 1;
         align-self: center;
-        margin: 0 auto 12px;
+        margin: 24px auto 14px;
         z-index: 1;
         display: flex;
         justify-content: center;

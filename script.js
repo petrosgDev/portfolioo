@@ -234,12 +234,12 @@ const navMenuDrawer = document.querySelector("#nav-menu-drawer");
 const navDrawerBackdrop = document.querySelector("#nav-drawer-backdrop");
 const drawerCloseBtn = document.querySelector("#drawer-close-btn");
 
-const openMobileMenu = () => {
+const openMobileMenu = (e) => {
+    e?.stopPropagation();
     if (!navMenuDrawer) return;
     navMenuDrawer.classList.add("is-open");
     navDrawerBackdrop?.classList.add("is-open");
     mobileMenuBtn?.setAttribute("aria-expanded", "true");
-    document.body.style.overflow = "hidden";
 };
 
 const closeMobileMenu = () => {
@@ -247,12 +247,20 @@ const closeMobileMenu = () => {
     navMenuDrawer.classList.remove("is-open");
     navDrawerBackdrop?.classList.remove("is-open");
     mobileMenuBtn?.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
 };
 
 mobileMenuBtn?.addEventListener("click", openMobileMenu);
 drawerCloseBtn?.addEventListener("click", closeMobileMenu);
 navDrawerBackdrop?.addEventListener("click", closeMobileMenu);
+
+// Close when clicking outside of the floating menu
+document.addEventListener("click", (e) => {
+    if (navMenuDrawer?.classList.contains("is-open")) {
+        if (!navMenuDrawer.contains(e.target) && !mobileMenuBtn?.contains(e.target)) {
+            closeMobileMenu();
+        }
+    }
+});
 
 navMenuDrawer?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeMobileMenu);
