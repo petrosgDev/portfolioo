@@ -1215,61 +1215,6 @@ nav a:focus-visible {
     font-size: 14px;
 }
 
-/* ─── NEO-BRUTALIST BORDER DOODLES & STICKERS ─── */
-
-.page-doodle {
-    position: absolute;
-    pointer-events: none;
-    user-select: none;
-    z-index: 3;
-    display: block;
-    height: auto;
-}
-
-/* 1. Hero: subtle sparkle near the top-left border */
-.doodle-hero-sparkle {
-    top: 14px;
-    left: 20px;
-    width: 32px;
-    opacity: 0.95;
-    animation: doodleFloat 7s ease-in-out infinite alternate;
-}
-
-/* 2. About Me: small sparkle star at bottom-right border */
-.doodle-about-sparkle {
-    bottom: 30px;
-    right: 40px;
-    width: 26px;
-    opacity: 0.85;
-}
-
-/* 3. Projects: sparkle star near top-right border of works */
-.doodle-projects-sparkle {
-    top: 42px;
-    right: 28px;
-    width: 34px;
-    transform: rotate(16deg);
-    opacity: 0.9;
-}
-
-/* 4. Contact: sparkle star near GET IN TOUCH header */
-.doodle-contact-sparkle {
-    top: 44px;
-    left: 36px;
-    width: 38px;
-    transform: rotate(-10deg);
-}
-
-@keyframes doodleFloat {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    100% {
-        transform: translateY(-6px) rotate(8deg);
-    }
-}
-
 /* ─── FOOTER ─── */
 
 footer {
@@ -1338,21 +1283,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .doodle-hero-sparkle {
-        top: 6px;
-        left: 14px;
-        width: 20px;
-    }
-
-    .doodle-projects-sparkle,
-    .doodle-contact-sparkle {
-        width: 24px;
-    }
-
-    .doodle-about-sparkle {
-        width: 20px;
-    }
-
     .hero {
         flex-direction: column;
         align-items: flex-start;
