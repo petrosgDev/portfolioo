@@ -15,7 +15,7 @@
 
 html {
     scroll-behavior: smooth;
-    cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, auto;
+    cursor: url('assets/images/cursor.svg') 3 1, url('assets/images/cursor.png') 3 1, auto;
 }
 
 body {
@@ -25,7 +25,7 @@ body {
     line-height: 1.6;
     min-width: 320px;
     overflow-x: hidden;
-    cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, auto;
+    cursor: url('assets/images/cursor.svg') 3 1, url('assets/images/cursor.png') 3 1, auto;
 }
 
 a,
@@ -39,7 +39,7 @@ button,
 .social-circle-btn,
 input[type="submit"],
 input[type="button"] {
-    cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, pointer;
+    cursor: url('assets/images/cursor.svg') 3 1, url('assets/images/cursor.png') 3 1, pointer;
 }
 
 main section[id] {
@@ -321,7 +321,7 @@ nav a:focus-visible {
     text-transform: uppercase;
     box-shadow: 6px 6px 0 var(--ink);
     text-decoration: none;
-    cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, pointer;
+    cursor: url('assets/images/cursor.svg') 3 1, url('assets/images/cursor.png') 3 1, pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
@@ -433,7 +433,7 @@ nav a:focus-visible {
     text-transform: uppercase;
     box-shadow: 5px 5px 0 var(--ink);
     text-decoration: none;
-    cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, pointer;
+    cursor: url('assets/images/cursor.svg') 3 1, url('assets/images/cursor.png') 3 1, pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
@@ -917,7 +917,7 @@ nav a:focus-visible {
     text-transform: uppercase;
     box-shadow: 6px 6px 0 var(--ink);
     text-decoration: none;
-    cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, pointer;
+    cursor: url('assets/images/cursor.svg') 3 1, url('assets/images/cursor.png') 3 1, pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
@@ -1034,7 +1034,7 @@ nav a:focus-visible {
     color: var(--ink);
     text-decoration: none;
     box-sizing: border-box;
-    cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, pointer;
+    cursor: url('assets/images/cursor.svg') 3 1, url('assets/images/cursor.png') 3 1, pointer;
     position: relative;
     opacity: 0;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -1199,7 +1199,7 @@ nav a:focus-visible {
     font-size: 16px;
     background: var(--lime);
     font-weight: 800;
-    cursor: url('cursor.svg') 3 1, url('cursor.png') 3 1, pointer;
+    cursor: url('assets/images/cursor.svg') 3 1, url('assets/images/cursor.png') 3 1, pointer;
     box-shadow: 4px 4px 0 var(--ink);
     transition: transform 0.15s, box-shadow 0.15s;
     margin-top: 4px;
