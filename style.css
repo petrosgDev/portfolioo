@@ -75,7 +75,7 @@ header {
     top: 0;
     z-index: 100;
     border-bottom: none;
-    background-color: var(--bg);
+    background: none;
 }
 
 nav {
@@ -649,17 +649,12 @@ nav a:focus-visible {
 .projects-section {
     max-width: 1092px;
     margin: 0 auto;
-    padding: 30px 20px 90px;
+    padding: 70px 20px 90px;
     position: relative;
 }
 
 .projects-section .section-header {
-    position: sticky;
-    top: var(--nav-height, 56px);
-    z-index: 20;
-    background-color: var(--bg);
-    margin: 0 -20px 40px;
-    padding: 16px 20px 20px;
+    margin-bottom: 45px;
     display: flex;
     justify-content: center;
 }
@@ -1399,13 +1394,8 @@ footer {
     }
 
     .projects-section {
-        padding-top: 20px;
+        padding-top: 68px;
         padding-bottom: 68px;
-    }
-
-    .projects-section .section-header {
-        margin: 0 -16px 28px;
-        padding: 12px 16px 16px;
     }
 
     .skills-grid {

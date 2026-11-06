@@ -24,17 +24,6 @@ if (currentYear) {
     currentYear.textContent = String(new Date().getFullYear());
 }
 
-// ─── SYNC STICKY HEADER HEIGHT ───
-const setNavHeight = () => {
-    const header = document.querySelector("header");
-    if (header) {
-        document.documentElement.style.setProperty("--nav-height", `${header.offsetHeight}px`);
-    }
-};
-window.addEventListener("load", setNavHeight);
-window.addEventListener("resize", setNavHeight);
-setNavHeight();
-
 // ─── ACTIVE NAV SCROLLSPY & SMOOTH TRANSITION ───
 const navLinks = document.querySelectorAll("nav ul a");
 const sections = document.querySelectorAll("main section[id]");
