@@ -475,7 +475,7 @@ nav a:focus-visible {
     margin: 0 auto;
     padding: 100px 24px;
     position: relative;
-    overflow: hidden;
+    overflow-x: clip;
 }
 
 .skills-section .section-header {
@@ -535,7 +535,7 @@ nav a:focus-visible {
     text-align: center;
     opacity: 0;
     transform: translateY(-15px);
-    transition: opacity 0.12s ease 0.08s, transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1) 0.08s;
+    transition: opacity 0.5s ease 0.35s, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s;
 }
 
 /* Category heading appears when skills section is active */
@@ -568,10 +568,10 @@ nav a:focus-visible {
     /* Default / Distributed State */
     transform: translateY(0) scale(1) rotate(var(--orig-rot, 0deg));
     opacity: 1;
-    /* Snappy, fast explosion (2x faster) */
-    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.15s ease,
-        opacity 0.25s ease;
+    /* 4x smoother and slower animation */
+    transition: transform 3.2s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.6s ease,
+        opacity 1.2s ease;
 }
 
 /* Initial stage (before scroll): all cards stacked in the exact center of the section */
@@ -654,12 +654,23 @@ nav a:focus-visible {
 }
 
 .projects-section .section-header {
+    container-type: inline-size;
+    position: sticky;
+    top: var(--nav-height, 58px);
+    z-index: 25;
+    background: transparent;
     margin-bottom: 45px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    pointer-events: none;
+    padding: 8px 0;
+    transition: margin-bottom 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .projects-section .section-header h2 {
+    /* Initially centered via container width */
+    transform: translateX(calc(50cqi - 50%));
     font-size: clamp(42px, 6vw, 76px);
     font-weight: 900;
     letter-spacing: -2.5px;
@@ -667,8 +678,61 @@ nav a:focus-visible {
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 16px;
+    pointer-events: auto;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                font-size 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                letter-spacing 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                gap 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projects-section .projects-slash {
+    display: inline-block;
+    opacity: 0;
+    max-width: 0;
+    margin-right: 0;
+    overflow: hidden;
+    transform: translateX(-8px);
+    transition: opacity 0.35s ease,
+                max-width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                margin-right 0.35s ease,
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    font-weight: 900;
+    color: var(--ink);
+}
+
+.projects-section .section-header .header-icon {
+    width: clamp(40px, 5.2vw, 64px);
+    height: auto;
+    filter: drop-shadow(4px 4px 0 var(--ink));
+    transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Compact Sticky Projects Header (5x font reduction, shifted to top-left with slash) ─── */
+.projects-section .section-header.is-compact {
+    margin-bottom: 22px;
+    padding: 4px 0;
+}
+
+.projects-section .section-header.is-compact h2 {
+    transform: translateX(0);
+    /* 5 times lower font size (76px / 5 = ~15px) */
+    font-size: 15px;
+    letter-spacing: -0.3px;
+    gap: 8px;
+}
+
+.projects-section .section-header.is-compact .projects-slash {
+    opacity: 1;
+    max-width: 18px;
+    margin-right: 5px;
+    transform: translateX(0);
+}
+
+.projects-section .section-header.is-compact .header-icon {
+    width: 15px;
+    filter: drop-shadow(1.5px 1.5px 0 var(--ink));
 }
 
 .projects-grid {

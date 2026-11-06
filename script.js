@@ -24,6 +24,17 @@ if (currentYear) {
     currentYear.textContent = String(new Date().getFullYear());
 }
 
+// ─── SYNC STICKY HEADER HEIGHT ───
+const setNavHeight = () => {
+    const header = document.querySelector("header");
+    if (header) {
+        document.documentElement.style.setProperty("--nav-height", `${header.offsetHeight}px`);
+    }
+};
+window.addEventListener("load", setNavHeight);
+window.addEventListener("resize", setNavHeight);
+setNavHeight();
+
 // ─── ACTIVE NAV SCROLLSPY & SMOOTH TRANSITION ───
 const navLinks = document.querySelectorAll("nav ul a");
 const sections = document.querySelectorAll("main section[id]");
@@ -91,8 +102,8 @@ function computeInitialCardStack() {
         tile.style.setProperty("--stack-y", `${deltaY + (index % 3 - 1) * 3}px`);
         tile.style.setProperty("--stack-rot", `${(index % 7 - 3) * 4}deg`);
         
-        // Snappy staggered cascade delay
-        tile.style.transitionDelay = `${index * 0.02}s`;
+        // 4x slower staggered explosion delay for cinematic effect
+        tile.style.transitionDelay = `${index * 0.12}s`;
     });
 
     // Make the first card in the list the top card on the center deck
@@ -112,12 +123,14 @@ if (skillsSection) {
             entries.forEach((entry) => {
                 if (entry.isIntersecting && !hasExploded) {
                     hasExploded = true;
-                    // Trigger immediately without artificial delay/lag
-                    skillsSection.classList.add("is-active");
+                    // Wait 0.5s as requested, then create categories & distribute cards!
+                    setTimeout(() => {
+                        skillsSection.classList.add("is-active");
+                    }, 500);
                 }
             });
         },
-        { threshold: 0.08 }
+        { threshold: 0.25 }
     );
     observer.observe(skillsSection);
 
@@ -165,6 +178,28 @@ if (allProjectCards.length) {
         revealAllProjects();
     }
 }
+
+// ─── PROJECTS COMPACT STICKY HEADER ANIMATION (SHRINK 5X & SHIFT TOP-LEFT) ───
+const projectsSection = document.querySelector("#projects");
+const projectsHeader = document.querySelector(".projects-section .section-header");
+
+const handleProjectsHeaderSticky = () => {
+    if (!projectsSection || !projectsHeader) return;
+    const rect = projectsSection.getBoundingClientRect();
+    const navHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--nav-height")) || 58;
+    
+    // Trigger compact state when user scrolls into project cards
+    if (rect.top <= navHeight - 10) {
+        projectsHeader.classList.add("is-compact");
+    } else {
+        projectsHeader.classList.remove("is-compact");
+    }
+};
+
+window.addEventListener("scroll", handleProjectsHeaderSticky, { passive: true });
+window.addEventListener("resize", handleProjectsHeaderSticky);
+window.addEventListener("load", handleProjectsHeaderSticky);
+handleProjectsHeaderSticky();
 
 // ─── CONTACT CHIPS INTERACTIVE ACTIVE/CLICK STATE & CASCADE OBSERVER ───
 const contactSection = document.querySelector("#contact");
