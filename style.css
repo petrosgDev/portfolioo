@@ -1330,7 +1330,9 @@ footer {
         border-radius: 10px;
         box-shadow: 3px 3px 0 var(--ink);
         cursor: pointer;
-        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        position: relative;
+        z-index: 1002;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
     }
 
     .mobile-menu-btn:hover,
@@ -1345,6 +1347,7 @@ footer {
         justify-content: space-between;
         width: 20px;
         height: 14px;
+        position: relative;
     }
 
     .mobile-menu-btn .menu-burger span {
@@ -1353,9 +1356,25 @@ footer {
         width: 100%;
         background-color: var(--ink);
         border-radius: 2px;
+        transition: transform 0.25s cubic-bezier(0.18, 0.9, 0.2, 1), opacity 0.2s ease;
+        transform-origin: center;
     }
 
-    /* Right-side Navigation Drawer with no backdrop overlay & individual white card items */
+    /* Morph hamburger lines directly into an 'X' icon when opened */
+    .mobile-menu-btn.is-open .menu-burger span:nth-child(1) {
+        transform: translateY(5.75px) rotate(45deg);
+    }
+
+    .mobile-menu-btn.is-open .menu-burger span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    .mobile-menu-btn.is-open .menu-burger span:nth-child(3) {
+        transform: translateY(-5.75px) rotate(-45deg);
+    }
+
+    /* Right-side Navigation Dropdown with no backdrop overlay & individual white card items */
     .nav-drawer-backdrop {
         display: none !important;
     }
@@ -1364,22 +1383,17 @@ footer {
         display: none;
         flex-direction: column;
         align-items: flex-end;
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: auto;
-        bottom: 0;
-        width: 260px;
-        max-width: 80vw;
-        height: 100vh;
-        height: 100dvh;
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 16px;
+        width: 240px;
+        max-width: calc(100vw - 32px);
         background: transparent;
         border: none;
         box-shadow: none;
-        z-index: 999;
-        padding: 14px 16px 24px 16px;
+        z-index: 1001;
+        padding: 0;
         box-sizing: border-box;
-        overflow: hidden;
     }
 
     .nav-menu-drawer.is-open {
@@ -1389,50 +1403,12 @@ footer {
     @keyframes menuCardFlow {
         from {
             opacity: 0;
-            transform: translateX(32px);
+            transform: translateY(-12px) scale(0.97);
         }
         to {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0) scale(1);
         }
-    }
-
-    .drawer-header {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        padding-bottom: 0;
-        margin-bottom: 12px;
-        border-bottom: none;
-    }
-
-    .nav-menu-drawer.is-open .drawer-header {
-        animation: menuCardFlow 0.3s cubic-bezier(0.18, 0.9, 0.2, 1) both;
-    }
-
-    .drawer-close-btn {
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--white);
-        color: var(--ink);
-        border: 2.5px solid var(--ink);
-        border-radius: 10px;
-        box-shadow: 3px 3px 0 var(--ink);
-        font-size: 18px;
-        font-weight: 900;
-        cursor: pointer;
-        transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease;
-    }
-
-    .drawer-close-btn:hover {
-        transform: translate(-1.5px, -1.5px);
-        box-shadow: 4px 4px 0 var(--ink);
-        background: var(--orange);
-        color: var(--white);
     }
 
     .nav-menu-drawer ul {
