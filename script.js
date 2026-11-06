@@ -24,6 +24,17 @@ if (currentYear) {
     currentYear.textContent = String(new Date().getFullYear());
 }
 
+// ─── SYNC STICKY HEADER HEIGHT ───
+const setNavHeight = () => {
+    const header = document.querySelector("header");
+    if (header) {
+        document.documentElement.style.setProperty("--nav-height", `${header.offsetHeight}px`);
+    }
+};
+window.addEventListener("load", setNavHeight);
+window.addEventListener("resize", setNavHeight);
+setNavHeight();
+
 // ─── ACTIVE NAV SCROLLSPY & SMOOTH TRANSITION ───
 const navLinks = document.querySelectorAll("nav ul a");
 const sections = document.querySelectorAll("main section[id]");
@@ -91,8 +102,8 @@ function computeInitialCardStack() {
         tile.style.setProperty("--stack-y", `${deltaY + (index % 3 - 1) * 3}px`);
         tile.style.setProperty("--stack-rot", `${(index % 7 - 3) * 4}deg`);
         
-        // 4x slower staggered explosion delay for cinematic effect
-        tile.style.transitionDelay = `${index * 0.12}s`;
+        // Snappy staggered cascade delay
+        tile.style.transitionDelay = `${index * 0.02}s`;
     });
 
     // Make the first card in the list the top card on the center deck
@@ -112,14 +123,12 @@ if (skillsSection) {
             entries.forEach((entry) => {
                 if (entry.isIntersecting && !hasExploded) {
                     hasExploded = true;
-                    // Wait 0.5s as requested, then create categories & distribute cards!
-                    setTimeout(() => {
-                        skillsSection.classList.add("is-active");
-                    }, 500);
+                    // Trigger immediately without artificial delay/lag
+                    skillsSection.classList.add("is-active");
                 }
             });
         },
-        { threshold: 0.25 }
+        { threshold: 0.08 }
     );
     observer.observe(skillsSection);
 
@@ -131,82 +140,41 @@ if (skillsSection) {
     skillsSection.addEventListener("touchstart", triggerNow, { passive: true });
 }
 
-// ─── PROJECTS SCATTER ON SCROLL & TOUCH WITH STACK CALCULATION ───
-const projectsSection = document.querySelector("#projects");
+// ─── SCROLL-TRIGGERED PROJECTS ANIMATION ───
 const allProjectCards = document.querySelectorAll(".projects-grid .project-card");
-const projectsGrid = document.querySelector(".projects-grid");
 
-function computeInitialProjectStack() {
-    if (!projectsGrid || !allProjectCards.length) return;
-    
-    // Find the exact visual center of the top row of the projects grid container
-    const gridRect = projectsGrid.getBoundingClientRect();
-    const centerX = gridRect.left + gridRect.width / 2;
-    const firstCardRect = allProjectCards[0].getBoundingClientRect();
-    const centerY = gridRect.top + firstCardRect.height / 2;
-    
-    allProjectCards.forEach((card, index) => {
-        const cardRect = card.getBoundingClientRect();
-        const cardCenterX = cardRect.left + cardRect.width / 2;
-        const cardCenterY = cardRect.top + cardRect.height / 2;
-        
-        const deltaX = centerX - cardCenterX;
-        const deltaY = centerY - cardCenterY;
-        
-        // Natural card-deck scatter at the pile
-        card.style.setProperty("--project-stack-x", `${deltaX + (index % 4 - 1.5) * 4}px`);
-        card.style.setProperty("--project-stack-y", `${deltaY + (index % 3 - 1) * 3}px`);
-        card.style.setProperty("--project-stack-rot", `${(index % 7 - 3) * 3}deg`);
-        
-        // Staggered explosion delay matching skills
-        card.style.transitionDelay = `${index * 0.12}s`;
-    });
-
-    if (allProjectCards[0]) {
-        allProjectCards[0].classList.add("project-top-card");
-    }
-}
-
-// Compute pile positions once DOM loads and on resize
-window.addEventListener("load", computeInitialProjectStack);
-window.addEventListener("resize", computeInitialProjectStack);
-
-if (projectsSection) {
-    let hasExplodedProjects = false;
-    const projectObserver = new IntersectionObserver(
-        (entries) => {
+if (allProjectCards.length) {
+    const projectCardObserver = new IntersectionObserver(
+        (entries, observer) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting && !hasExplodedProjects) {
-                    hasExplodedProjects = true;
-                    setTimeout(() => {
-                        projectsSection.classList.add("is-active");
-                    }, 500);
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
                 }
             });
         },
-        { threshold: 0.20 }
-    );
-    projectObserver.observe(projectsSection);
-
-    // Also support instant touch/click on mobile or touch screens
-    const triggerProjectsNow = () => {
-        projectsSection.classList.add("is-active");
-    };
-    projectsSection.addEventListener("click", triggerProjectsNow);
-    projectsSection.addEventListener("touchstart", triggerProjectsNow, { passive: true });
-}
-
-// Direct button triggers for links
-document.querySelectorAll('a[href="#projects"]').forEach(btn => {
-    btn.addEventListener("click", () => {
-        if (projectsSection) {
-            projectsSection.classList.add("is-active");
+        {
+            threshold: 0.12,
+            rootMargin: "0px 0px -40px 0px",
         }
-    });
-});
+    );
 
-if (window.location.hash === "#projects" && projectsSection) {
-    projectsSection.classList.add("is-active");
+    allProjectCards.forEach((card) => {
+        projectCardObserver.observe(card);
+    });
+
+    // Reveal instantly if navigated via anchor link or hash
+    const revealAllProjects = () => {
+        allProjectCards.forEach((card) => card.classList.add("is-visible"));
+    };
+
+    document.querySelectorAll('a[href="#projects"]').forEach((btn) => {
+        btn.addEventListener("click", revealAllProjects);
+    });
+
+    if (window.location.hash === "#projects") {
+        revealAllProjects();
+    }
 }
 
 // ─── CONTACT CHIPS INTERACTIVE ACTIVE/CLICK STATE & CASCADE OBSERVER ───

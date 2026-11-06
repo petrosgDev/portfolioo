@@ -75,7 +75,7 @@ header {
     top: 0;
     z-index: 100;
     border-bottom: none;
-    background: none;
+    background-color: var(--bg);
 }
 
 nav {
@@ -535,7 +535,7 @@ nav a:focus-visible {
     text-align: center;
     opacity: 0;
     transform: translateY(-15px);
-    transition: opacity 0.5s ease 0.35s, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s;
+    transition: opacity 0.12s ease 0.08s, transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1) 0.08s;
 }
 
 /* Category heading appears when skills section is active */
@@ -568,10 +568,10 @@ nav a:focus-visible {
     /* Default / Distributed State */
     transform: translateY(0) scale(1) rotate(var(--orig-rot, 0deg));
     opacity: 1;
-    /* 4x smoother and slower animation */
-    transition: transform 3.2s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.6s ease,
-        opacity 1.2s ease;
+    /* Snappy, fast explosion (2x faster) */
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.15s ease,
+        opacity 0.25s ease;
 }
 
 /* Initial stage (before scroll): all cards stacked in the exact center of the section */
@@ -649,12 +649,17 @@ nav a:focus-visible {
 .projects-section {
     max-width: 1092px;
     margin: 0 auto;
-    padding: 90px 20px;
+    padding: 30px 20px 90px;
     position: relative;
 }
 
 .projects-section .section-header {
-    margin-bottom: 45px;
+    position: sticky;
+    top: var(--nav-height, 56px);
+    z-index: 20;
+    background-color: var(--bg);
+    margin: 0 -20px 40px;
+    padding: 16px 20px 20px;
     display: flex;
     justify-content: center;
 }
@@ -688,40 +693,29 @@ nav a:focus-visible {
     flex-direction: column;
     overflow: hidden;
     will-change: transform, opacity;
-    /* Default / Distributed State */
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 1;
-    /* Card deck explosion animation matching skills */
-    transition: transform 3.2s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.6s ease,
-        opacity 1.2s ease;
-}
-
-/* Initial stage (before scroll): all project cards stacked in the exact center pile */
-.projects-section:not(.is-active) .project-card {
-    transform: translate(var(--project-stack-x, 0px), var(--project-stack-y, 0px)) rotate(var(--project-stack-rot, 0deg)) scale(0.97) !important;
+    /* Scroll-triggered reveal initial state */
     opacity: 0;
-    pointer-events: none;
+    transform: translateY(40px);
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.45s ease,
+        box-shadow 0.25s ease;
 }
 
-/* The top card on the stack stays visible */
-.projects-section:not(.is-active) .project-card.project-top-card {
-    opacity: 1 !important;
-    pointer-events: auto;
-    box-shadow: 8px 8px 0 var(--ink) !important;
+/* Stagger even items slightly in 2-column layout */
+.projects-grid .project-card:nth-child(even) {
+    transition-delay: 0.08s;
 }
 
-/* Distributed state when section is active */
-.projects-section.is-active .project-card {
-    transform: translate(0, 0) scale(1) rotate(0deg);
+/* Scroll-triggered reveal state */
+.project-card.is-visible {
     opacity: 1;
-    pointer-events: auto;
+    transform: translateY(0);
 }
 
-.projects-section.is-active .project-card:hover {
+.project-card.is-visible:hover {
     transform: translate(-4px, -4px);
     box-shadow: 11px 11px 0 var(--ink);
-    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+    transition-delay: 0s;
 }
 
 .project-img-wrapper {
@@ -1399,10 +1393,19 @@ footer {
         letter-spacing: -1px;
     }
 
-    .skills-section,
-    .projects-section {
+    .skills-section {
         padding-top: 68px;
         padding-bottom: 68px;
+    }
+
+    .projects-section {
+        padding-top: 20px;
+        padding-bottom: 68px;
+    }
+
+    .projects-section .section-header {
+        margin: 0 -16px 28px;
+        padding: 12px 16px 16px;
     }
 
     .skills-grid {
