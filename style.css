@@ -205,7 +205,7 @@ nav a:focus-visible {
 .hero-headline {
     display: flex;
     flex-direction: column;
-    gap: clamp(2px, 0.4vw, 5px);
+    gap: 0;
     max-width: 920px;
     margin-top: 0;
     margin-bottom: 24px;
@@ -215,41 +215,35 @@ nav a:focus-visible {
 
 .hero-line {
     display: block;
-    line-height: 0.93;
+    line-height: 0.92;
     font-weight: 900;
+    font-size: clamp(46px, 5.8vw, 84px);
+    letter-spacing: -2.2px;
+    white-space: nowrap;
 }
 
 .hero-line-1 {
-    font-size: clamp(46px, 5.8vw, 80px);
-    color: var(--ink);
-    letter-spacing: -2px;
+    color: #171717;
 }
 
 .hero-line-2 {
-    font-size: clamp(58px, 7.6vw, 105px);
-    letter-spacing: -1.5px;
+    color: #0284C7;
 }
 
 .hero-line-3 {
-    font-size: clamp(52px, 6.8vw, 94px);
-    letter-spacing: -2px;
+    color: #FF6B35;
 }
 
 .hero-line-4 {
-    font-size: clamp(46px, 5.8vw, 80px);
-    color: var(--ink);
-    letter-spacing: -1.5px;
+    color: #7C3AED;
 }
 
 .hero-line-5 {
-    font-size: clamp(42px, 5.2vw, 72px);
-    color: var(--ink);
-    letter-spacing: -2px;
+    color: #EC4899;
 }
 
 .hero-line-6 {
-    font-size: clamp(46px, 5.8vw, 82px);
-    letter-spacing: -2px;
+    color: #16A34A;
 }
 
 .hero h1 {
@@ -664,9 +658,9 @@ nav a:focus-visible {
 /* ─── PROJECTS ─── */
 
 .projects-section {
-    max-width: 1092px;
+    max-width: 1360px;
     margin: 0 auto;
-    padding: 70px 20px 90px;
+    padding: 70px 24px 90px;
     position: relative;
 }
 
@@ -682,7 +676,7 @@ nav a:focus-visible {
     pointer-events: none;
     padding: 8px 0;
     transition: margin-bottom 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                padding 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        padding 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .projects-section .section-header h2 {
@@ -698,9 +692,9 @@ nav a:focus-visible {
     gap: 16px;
     pointer-events: auto;
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                font-size 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                letter-spacing 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                gap 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        font-size 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        letter-spacing 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        gap 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .projects-section .projects-slash {
@@ -711,9 +705,9 @@ nav a:focus-visible {
     overflow: hidden;
     transform: translateX(-8px);
     transition: opacity 0.35s ease,
-                max-width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                margin-right 0.35s ease,
-                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        max-width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        margin-right 0.35s ease,
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     font-weight: 900;
     color: var(--ink);
 }
@@ -723,7 +717,7 @@ nav a:focus-visible {
     height: auto;
     filter: drop-shadow(4px 4px 0 var(--ink));
     transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ─── Compact Sticky Projects Header (5x font reduction, shifted to top-left with slash) ─── */
@@ -754,25 +748,28 @@ nav a:focus-visible {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-    max-width: 1052px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1320px;
     margin: 0 auto;
 }
 
+/* ─── NEW NEO-BRUTALIST PROJECT CARDS ─── */
 .project-card {
     border: 3.5px solid var(--ink);
-    border-radius: 18px;
-    background-color: var(--white);
+    border-radius: 22px;
     box-shadow: 7px 7px 0 var(--ink);
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    gap: 12px;
+    position: relative;
+    overflow: visible;
     will-change: transform, opacity;
     /* Scroll-triggered reveal initial state */
     opacity: 0;
-    transform: translateY(40px);
-    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform: translateY(35px);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
         opacity 0.45s ease,
         box-shadow 0.25s ease;
 }
@@ -794,117 +791,236 @@ nav a:focus-visible {
     transition-delay: 0s;
 }
 
-.project-img-wrapper {
-    width: 100%;
-    height: 234px;
-    border-bottom: 3.5px solid var(--ink);
-    overflow: hidden;
-    background-color: #eee;
+/* Card Theme Variations (matching reference image) */
+.project-card.card--retro-os {
+    background-color: #FAF8F2;
 }
 
-.project-img {
+.project-card.card--lime {
+    background-color: #E2F952;
+}
+
+.project-card.card--white {
+    background-color: #FFFFFF;
+}
+
+.project-card.card--orange {
+    background-color: #FF6B35;
+}
+
+/* Top Header Bar */
+.card-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 28px;
+    padding: 2px 2px 0;
+}
+
+.card-header-bar.justify-end {
+    justify-content: flex-end;
+}
+
+/* Retro OS Window Traffic-Light Dots */
+.os-window-dots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.os-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 1.5px solid var(--ink);
+    display: inline-block;
+}
+
+.dot-red {
+    background-color: #FF5F56;
+}
+
+.dot-yellow {
+    background-color: #FFBD2E;
+}
+
+.dot-green {
+    background-color: #27C93F;
+}
+
+/* Category Pill Badges */
+.card-pill-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    color: var(--ink);
+}
+
+.tag-blue {
+    background-color: #38DBFF;
+}
+
+.tag-yellow {
+    background-color: #FFE600;
+}
+
+.tag-white {
+    background-color: #FFFFFF;
+}
+
+.tag-live {
+    background-color: #FFE5D9;
+}
+
+.tag-cyan {
+    background-color: #38DBFF;
+}
+
+.tag-orange {
+    background-color: #FF8F6B;
+}
+
+/* Inset Framed Preview Image */
+.project-img-frame {
+    width: 100%;
+    height: 195px;
+    border: 3px solid var(--ink);
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: #EAE6DD;
+    position: relative;
+}
+
+.project-img-frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top center;
-    transition: transform 0.4s ease;
+    display: block;
+    transition: transform 0.35s ease;
 }
 
-.project-card:hover .project-img {
-    transform: scale(1.05);
+.project-card:hover .project-img-frame img {
+    transform: scale(1.04);
 }
 
-.project-body {
-    padding: 20px 22px;
+/* Card Info Body (Descriptions Removed) */
+.project-card-info {
     display: flex;
     flex-direction: column;
     flex: 1;
+    gap: 12px;
+    padding: 4px 2px 0;
 }
 
-.project-top {
-    margin-bottom: 10px;
-}
-
-.project-number {
-    font-size: 11.5px;
+.project-title {
+    font-size: 20px;
     font-weight: 900;
-    letter-spacing: 2px;
-    color: #666;
-    text-transform: uppercase;
-}
-
-.project-card h3 {
-    font-size: 23px;
-    font-weight: 900;
-    margin-bottom: 9px;
     letter-spacing: -0.5px;
+    margin: 0;
+    color: var(--ink);
     line-height: 1.25;
 }
 
-.project-card p {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 12px;
-    color: #333;
-}
-
-.project-stack {
+/* Rounded Tech Stack Pills */
+.project-tags-row {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 15px;
-}
-
-.project-stack span {
-    background-color: var(--lime);
-    border: 2px solid var(--ink);
-    border-radius: 6px;
-    padding: 3px 8px;
-    font-size: 11.5px;
-    font-weight: bold;
-}
-
-.project-footer-row {
-    margin-top: auto;
-    padding-top: 14px;
-    border-top: 2.5px solid var(--ink);
-    display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
-.project-links {
-    display: inline-flex;
+.tech-pill {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3.5px 9px;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+    background-color: #FFFFFF;
+    color: var(--ink);
+    box-shadow: 1.5px 1.5px 0 var(--ink);
+}
+
+.pill-orange {
+    background-color: #FF8F6B;
+}
+
+.pill-yellow {
+    background-color: #FFE600;
+}
+
+.pill-peach {
+    background-color: #FFD2B8;
+}
+
+.pill-lime {
+    background-color: #C6FF33;
+}
+
+.pill-cyan {
+    background-color: #A5F3FC;
+}
+
+.pill-pink {
+    background-color: #FBCFE8;
+}
+
+.pill-white {
+    background-color: #FFFFFF;
+}
+
+/* Action Buttons Row */
+.project-actions-row {
+    display: flex;
     align-items: center;
     gap: 8px;
+    margin-top: auto;
+    padding-top: 4px;
 }
 
-.project-meta {
-    font-size: 12.5px;
-    font-weight: 800;
-    color: #555;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.project-btn {
+.card-btn {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 7px 14px;
-    border: 2px solid var(--ink);
-    border-radius: 8px;
-    background: var(--lime);
-    font-size: 12.5px;
-    font-weight: 800;
-    color: var(--ink);
+    justify-content: center;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 900;
+    text-decoration: none;
+    border-radius: 999px;
+    border: 2.5px solid var(--ink);
     box-shadow: 3px 3px 0 var(--ink);
-    transition: 0.2s;
+    color: var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.project-btn:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0 var(--ink);
+.card-btn:hover {
+    transform: translate(-1.5px, -1.5px);
+    box-shadow: 4.5px 4.5px 0 var(--ink);
+}
+
+.card-btn.btn-live {
+    background-color: var(--primary);
+}
+
+.card-btn.btn-github {
+    background-color: #FFFFFF;
+}
+
+.card-btn.btn-dark {
+    background-color: #FFFFFF;
+}
+
+.card-btn.btn-full {
+    background-color: #FFFFFF;
+    width: 100%;
+    text-align: center;
 }
 
 .projects-more-wrapper {
@@ -1293,6 +1409,13 @@ footer {
 
 /* ─── RESPONSIVE ─── */
 
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+}
+
 @media (max-width: 900px) {
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1368,6 +1491,10 @@ footer {
     }
 
     /* Morph hamburger lines directly into an 'X' icon when opened */
+    .mobile-menu-btn.is-open {
+        background-color: var(--white);
+    }
+
     .mobile-menu-btn.is-open .menu-burger span:nth-child(1) {
         transform: translateY(5.75px) rotate(45deg);
     }
@@ -1412,6 +1539,7 @@ footer {
             opacity: 0;
             transform: translateX(28px) scale(0.96);
         }
+
         to {
             opacity: 1;
             transform: translateX(0) scale(1);
@@ -1437,11 +1565,31 @@ footer {
         animation: menuCardFlow 0.35s cubic-bezier(0.18, 0.9, 0.2, 1) both;
     }
 
-    .nav-menu-drawer.is-open ul li:nth-child(1) { animation-delay: 0.04s; } /* Home */
-    .nav-menu-drawer.is-open ul li:nth-child(2) { animation-delay: 0.09s; } /* About */
-    .nav-menu-drawer.is-open ul li:nth-child(3) { animation-delay: 0.14s; } /* Skills */
-    .nav-menu-drawer.is-open ul li:nth-child(4) { animation-delay: 0.19s; } /* Projects */
-    .nav-menu-drawer.is-open ul li:nth-child(5) { animation-delay: 0.24s; } /* Get in Touch */
+    .nav-menu-drawer.is-open ul li:nth-child(1) {
+        animation-delay: 0.04s;
+    }
+
+    /* Home */
+    .nav-menu-drawer.is-open ul li:nth-child(2) {
+        animation-delay: 0.09s;
+    }
+
+    /* About */
+    .nav-menu-drawer.is-open ul li:nth-child(3) {
+        animation-delay: 0.14s;
+    }
+
+    /* Skills */
+    .nav-menu-drawer.is-open ul li:nth-child(4) {
+        animation-delay: 0.19s;
+    }
+
+    /* Projects */
+    .nav-menu-drawer.is-open ul li:nth-child(5) {
+        animation-delay: 0.24s;
+    }
+
+    /* Get in Touch */
 
     .nav-menu-drawer ul a {
         display: block;
@@ -1518,9 +1666,16 @@ footer {
     .hero-headline {
         align-items: center;
         text-align: center;
-        font-size: clamp(28px, 8.5vw, 48px);
-        letter-spacing: -1.5px;
         margin-bottom: 24px;
+        gap: 2px;
+    }
+
+    .hero-line {
+        font-size: clamp(32px, 9.5vw, 46px);
+        line-height: 0.95;
+        letter-spacing: -1.5px;
+        text-align: center;
+        white-space: nowrap;
     }
 
     .hero-buttons {
@@ -1559,14 +1714,17 @@ footer {
 @media (max-width: 700px) {
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 0 4px;
     }
 
     .project-card {
-        padding: 0;
+        padding: 14px;
+        border-radius: 20px;
     }
 
-    .project-body {
-        padding: 22px;
+    .project-img-frame {
+        height: 190px;
     }
 }
 
@@ -1694,7 +1852,7 @@ footer {
     visibility: hidden;
     pointer-events: none;
     transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-modal-backdrop.is-open {
@@ -1716,7 +1874,7 @@ footer {
     overflow: hidden;
     transform: scale(0.94) translateY(18px);
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.3s ease;
+        opacity 0.3s ease;
     opacity: 0;
 }
 
@@ -1747,7 +1905,7 @@ footer {
     border: 2px solid var(--ink);
     border-radius: 6px;
     text-transform: uppercase;
-    box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
 }
 
@@ -1960,11 +2118,25 @@ footer {
     background: var(--white);
 }
 
-.detail-pill.pill-yellow { background: var(--primary); }
-.detail-pill.pill-lime { background: #c6ff33; }
-.detail-pill.pill-orange { background: #ffa07a; }
-.detail-pill.pill-cyan { background: #a5f3fc; }
-.detail-pill.pill-purple { background: #e9d5ff; }
+.detail-pill.pill-yellow {
+    background: var(--primary);
+}
+
+.detail-pill.pill-lime {
+    background: #c6ff33;
+}
+
+.detail-pill.pill-orange {
+    background: #ffa07a;
+}
+
+.detail-pill.pill-cyan {
+    background: #a5f3fc;
+}
+
+.detail-pill.pill-purple {
+    background: #e9d5ff;
+}
 
 /* Engineering Focus Chips */
 .detail-focus-tags {
@@ -2082,23 +2254,29 @@ footer {
     .detail-dialog-bar {
         padding: 10px 14px;
     }
+
     .dialog-bar-badge {
         display: none;
     }
+
     .detail-dialog-scrollable {
         padding: 16px;
         gap: 16px;
     }
+
     .detail-card-block {
         padding: 14px;
     }
+
     .features-list-grid {
         grid-template-columns: 1fr;
     }
+
     .detail-dialog-footer {
         flex-direction: column;
         gap: 8px;
     }
+
     .dialog-nav-btn {
         width: 100%;
         text-align: center;
