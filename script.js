@@ -228,3 +228,39 @@ contactChips.forEach((chip) => {
     chip.addEventListener("touchstart", highlightChip, { passive: true });
 });
 
+// ─── MOBILE DRAWER MENU CONTROLLER ───
+const mobileMenuBtn = document.querySelector("#mobile-menu-btn");
+const navMenuDrawer = document.querySelector("#nav-menu-drawer");
+const navDrawerBackdrop = document.querySelector("#nav-drawer-backdrop");
+const drawerCloseBtn = document.querySelector("#drawer-close-btn");
+
+const openMobileMenu = () => {
+    if (!navMenuDrawer) return;
+    navMenuDrawer.classList.add("is-open");
+    navDrawerBackdrop?.classList.add("is-open");
+    mobileMenuBtn?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+};
+
+const closeMobileMenu = () => {
+    if (!navMenuDrawer) return;
+    navMenuDrawer.classList.remove("is-open");
+    navDrawerBackdrop?.classList.remove("is-open");
+    mobileMenuBtn?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+};
+
+mobileMenuBtn?.addEventListener("click", openMobileMenu);
+drawerCloseBtn?.addEventListener("click", closeMobileMenu);
+navDrawerBackdrop?.addEventListener("click", closeMobileMenu);
+
+navMenuDrawer?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
+});
+
+window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && navMenuDrawer?.classList.contains("is-open")) {
+        closeMobileMenu();
+    }
+});
+

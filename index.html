@@ -17,13 +17,33 @@
             <a href="#home" class="nav-logo" aria-label="Home">
                 <img src="assets/images/logo-transparent.png" alt="Petros Geto Logo">
             </a>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Get in Touch</a></li>
-            </ul>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Toggle navigation menu"
+                aria-expanded="false" aria-controls="nav-menu-drawer">
+                <span class="menu-burger" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="menu-btn-text">MENU</span>
+            </button>
+
+            <!-- Navigation Links / Left Drawer on Mobile -->
+            <div class="nav-menu-drawer" id="nav-menu-drawer">
+                <div class="drawer-header">
+                    <span class="drawer-title">MENU</span>
+                    <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Close menu">✕</button>
+                </div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Get in Touch</a></li>
+                </ul>
+            </div>
+            <div class="nav-drawer-backdrop" id="nav-drawer-backdrop" aria-hidden="true"></div>
         </nav>
     </header>
 
