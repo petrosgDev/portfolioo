@@ -102,8 +102,8 @@ function computeInitialCardStack() {
         tile.style.setProperty("--stack-y", `${deltaY + (index % 3 - 1) * 3}px`);
         tile.style.setProperty("--stack-rot", `${(index % 7 - 3) * 4}deg`);
         
-        // 32x faster staggered explosion delay
-        tile.style.transitionDelay = `${index * 0.00375}s`;
+        // Professional staggered card explosion delay
+        tile.style.transitionDelay = `${index * 0.035}s`;
     });
 
     // Make the first card in the list the top card on the center deck
@@ -123,14 +123,14 @@ if (skillsSection) {
             entries.forEach((entry) => {
                 if (entry.isIntersecting && !hasExploded) {
                     hasExploded = true;
-                    // 32x faster trigger (16ms = 1 frame instead of 500ms)
+                    // Balanced anticipation pause (200ms) so cards are seen before scattering
                     setTimeout(() => {
                         skillsSection.classList.add("is-active");
-                    }, 16);
+                    }, 200);
                 }
             });
         },
-        { threshold: 0.15 }
+        { threshold: 0.2 }
     );
     observer.observe(skillsSection);
 

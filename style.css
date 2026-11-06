@@ -535,8 +535,7 @@ nav a:focus-visible {
     text-align: center;
     opacity: 0;
     transform: translateY(-15px);
-    /* 32x faster transition */
-    transition: opacity 0.016s ease 0.011s, transform 0.016s cubic-bezier(0.2, 0.8, 0.2, 1) 0.011s;
+    transition: opacity 0.35s ease 0.15s, transform 0.4s cubic-bezier(0.18, 0.9, 0.2, 1) 0.15s;
 }
 
 /* Category heading appears when skills section is active */
@@ -569,10 +568,10 @@ nav a:focus-visible {
     /* Default / Distributed State */
     transform: translateY(0) scale(1) rotate(var(--orig-rot, 0deg));
     opacity: 1;
-    /* 32x faster lightning explosion animation */
-    transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 0.019s ease,
-        opacity 0.038s ease;
+    /* Professional smooth & dynamic explosion curve */
+    transition: transform 0.75s cubic-bezier(0.18, 0.9, 0.2, 1),
+        box-shadow 0.25s ease,
+        opacity 0.35s ease;
 }
 
 /* Initial stage (before scroll): all cards stacked in the exact center of the section */
