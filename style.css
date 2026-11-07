@@ -754,6 +754,11 @@ nav a:focus-visible {
     margin: 0 auto;
 }
 
+/* Hide project cards beyond the 6th by default until 'SEE MORE' is clicked */
+.projects-grid:not(.is-expanded) .project-card:nth-child(n+7) {
+    display: none !important;
+}
+
 /* ─── NEW NEO-BRUTALIST PROJECT CARDS ─── */
 .project-card {
     border: 3.5px solid var(--ink);
@@ -983,26 +988,52 @@ nav a:focus-visible {
     gap: 8px;
     margin-top: auto;
     padding-top: 4px;
+    flex-wrap: wrap;
 }
 
 .card-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 18px;
-    font-size: 13px;
+    padding: 7px 15px;
+    font-size: 12px;
     font-weight: 900;
     text-decoration: none;
     border-radius: 999px;
     border: 2.5px solid var(--ink);
     box-shadow: 3px 3px 0 var(--ink);
     color: var(--ink);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
 .card-btn:hover {
     transform: translate(-1.5px, -1.5px);
     box-shadow: 4.5px 4.5px 0 var(--ink);
+}
+
+.card-btn.btn-spec {
+    background-color: var(--primary);
+    color: var(--ink);
+}
+
+.card-btn.btn-spec:hover {
+    background-color: #D9FF38;
+}
+
+.project-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.project-title a:hover {
+    color: #0284C7;
+    text-decoration: underline;
+}
+
+.project-img-frame {
+    display: block;
+    text-decoration: none;
 }
 
 .card-btn.btn-live {
@@ -1067,6 +1098,43 @@ nav a:focus-visible {
 
 .projects-more-btn svg {
     flex-shrink: 0;
+}
+
+.projects-more-btn .more-github-icon {
+    display: none;
+}
+
+.projects-more-btn .more-chevron-icon {
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.projects-more-btn:hover .more-chevron-icon {
+    transform: translateY(2.5px);
+}
+
+.projects-more-btn.is-github-mode .more-chevron-icon {
+    display: none;
+}
+
+.projects-more-btn.is-github-mode .more-github-icon {
+    display: block;
+}
+
+.projects-more-btn.is-github-mode {
+    animation: btnMorphPop 0.32s cubic-bezier(0.18, 0.9, 0.2, 1);
+}
+
+@keyframes btnMorphPop {
+    0% {
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* ─── CONTACT ─── */

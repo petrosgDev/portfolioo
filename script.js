@@ -179,6 +179,67 @@ if (allProjectCards.length) {
     }
 }
 
+// ─── SEE MORE / SHOW ALL PROJECTS CONTROLLER ───
+const projectsGrid = document.querySelector(".projects-grid");
+const projectsMoreBtn = document.querySelector("#projects-more-btn");
+
+if (projectsMoreBtn && projectsGrid) {
+    let isAllProjectsShown = false;
+
+    const expandProjects = () => {
+        if (isAllProjectsShown) return;
+        isAllProjectsShown = true;
+
+        // Reveal all extra project cards beyond the initial 6
+        projectsGrid.classList.add("is-expanded");
+
+        // Stagger extra cards into view
+        const extraCards = projectsGrid.querySelectorAll(".project-card:nth-child(n+7)");
+        extraCards.forEach((card, idx) => {
+            card.classList.remove("is-visible");
+            setTimeout(() => {
+                card.classList.add("is-visible");
+            }, idx * 70);
+        });
+
+        // Morph the button into the GitHub link
+        projectsMoreBtn.classList.add("is-github-mode");
+        projectsMoreBtn.setAttribute("href", "https://github.com/petrosgDev?tab=repositories");
+        projectsMoreBtn.setAttribute("target", "_blank");
+        projectsMoreBtn.setAttribute("rel", "noopener noreferrer");
+        projectsMoreBtn.setAttribute("aria-expanded", "true");
+        projectsMoreBtn.setAttribute("aria-label", "See more projects on GitHub");
+        projectsMoreBtn.removeAttribute("role");
+
+        const btnText = projectsMoreBtn.querySelector(".projects-more-btn-text");
+        if (btnText) {
+            btnText.textContent = "SEE MORE PROJECTS ON GITHUB ↗";
+        }
+
+        // Smoothly scroll down so the first new project is in view
+        if (extraCards.length > 0) {
+            setTimeout(() => {
+                extraCards[0].scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }, 120);
+        }
+    };
+
+    projectsMoreBtn.addEventListener("click", (e) => {
+        if (!isAllProjectsShown) {
+            e.preventDefault();
+            expandProjects();
+        }
+        // If already expanded, default click opens GitHub in a new tab!
+    });
+
+    projectsMoreBtn.addEventListener("keydown", (e) => {
+        if (!isAllProjectsShown && (e.key === "Enter" || e.key === " ")) {
+            e.preventDefault();
+            expandProjects();
+        }
+    });
+}
+
 // ─── PROJECTS COMPACT STICKY HEADER ANIMATION (SHRINK 5X & SHIFT TOP-LEFT) ───
 const projectsSection = document.querySelector("#projects");
 const projectsHeader = document.querySelector(".projects-section .section-header");
