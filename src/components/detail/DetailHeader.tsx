@@ -1,24 +1,24 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 
 interface DetailHeaderProps {
-  projectId: string;
+  projectName: string;
 }
 
-export default function DetailHeader({ projectId }: DetailHeaderProps) {
-  const slug = `${projectId.toUpperCase().replace(/-/g, '_')}_DETAIL`;
-
+export default function DetailHeader({ projectName }: DetailHeaderProps) {
   return (
-    <header className="detail-header">
+    <header className="detail-header" id="detailHeader">
       <div className="detail-header-inner">
-        <Link href="/" className="back-btn" id="backToProjectsBtn" aria-label="Back to Home">
+        <Link href="/" className="detail-back-btn" aria-label="Back to Home">
           <svg
             width="18"
             height="18"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="3"
+            strokeWidth="2.5"
             strokeLinecap="round"
             strokeLinejoin="round"
             aria-hidden="true"
@@ -31,9 +31,10 @@ export default function DetailHeader({ projectId }: DetailHeaderProps) {
 
         <div className="detail-header-right">
           <div className="detail-breadcrumb font-mono">
-            PETROS GETO // <strong id="headerSlugTag">{slug}</strong>
+            PETROS GETO // <strong>{projectName.toUpperCase()}</strong>
           </div>
           <Link href="/" className="detail-logo-badge" title="Petros Geto — Home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/assets/images/logo-transparent.png" alt="Petros Geto Monogram" />
           </Link>
         </div>
@@ -41,4 +42,3 @@ export default function DetailHeader({ projectId }: DetailHeaderProps) {
     </header>
   );
 }
-
