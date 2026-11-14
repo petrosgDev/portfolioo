@@ -1,25 +1,51 @@
-export interface KeyFeatureItem {
-  title: string;
-  description: string;
-  tag?: string;
+export interface TechPill {
+  label: string;
+  bg: string;
 }
 
-export interface TechStackGroup {
-  category: string;
-  skills: string[];
+export interface SpecItem {
+  label: string;
+  value: string;
 }
 
-export interface ArchitectureLayerItem {
-  layer: string;
-  title: string;
-  description: string;
-  tech: string;
+export interface ProjectScores {
+  perf: string;
+  sec: string;
+  uptime: string;
+  tests: string;
 }
 
-export interface WorkflowStepItem {
+export interface MetricItem {
+  tag: string;
+  value: string;
+  desc: string;
+  bg: string;
+}
+
+export interface ArchitectureNode {
   step: string;
   title: string;
-  description: string;
+  tech: string;
+  subtitle: string;
+  detail: string;
+}
+
+export interface SchemaColumn {
+  name: string;
+  type: string;
+}
+
+export interface SchemaTable {
+  name: string;
+  badge: string;
+  color: string;
+  columns: SchemaColumn[];
+}
+
+export interface DecisionItem {
+  badge: string;
+  title: string;
+  desc: string;
 }
 
 export interface Project {
@@ -28,48 +54,28 @@ export interface Project {
   categoryBadge: string;
   categoryBadgeBg: string;
   version: string;
-  subtitle: string;
   roleTimeline: string;
-  status: string;
+  subtitle: string;
+  overview: string;
+  previewImage: string;
   liveUrl: string;
   githubUrl: string;
-
-  // 1. Hero & Meta
-  heroTags?: string[];
-
-  // 2. Project Overview
-  overview: string;
-  overviewSummary: string;
-
-  // 3. Problem Statement
-  problemTitle: string;
-  problemBody: string;
-  problemPoints: string[];
-
-  // 4. Solution
+  cloneCmd: string;
+  techPills: TechPill[];
+  specs: SpecItem[];
+  scores: ProjectScores;
+  metrics: MetricItem[];
+  architectureNodes: ArchitectureNode[];
+  schemaTables: SchemaTable[];
+  codePath: string;
+  codeNote: string;
+  codeSnippet: string;
+  challengeTitle: string;
+  challengeBody: string;
+  challengeBullets: string[];
   solutionTitle: string;
   solutionBody: string;
-  solutionPoints: string[];
-
-  // 5. Key Features
-  keyFeatures: KeyFeatureItem[];
-
-  // 6. Screenshots & Gallery
-  previewImage: string;
-  galleryCaption: string;
-
-  // 7. Technologies Used
-  techStack: TechStackGroup[];
-  techPills: { label: string; bg: string }[];
-
-  // 8. System Architecture
-  architectureOverview: string;
-  architectureLayers: ArchitectureLayerItem[];
-
-  // 9. How It Works
-  howItWorks: WorkflowStepItem[];
-
-  // 10. My Role & Contributions
-  myRole: string;
-  contributions: string[];
+  solutionBullets: string[];
+  decisions: DecisionItem[];
 }
+
