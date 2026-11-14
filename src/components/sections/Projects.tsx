@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 
 export default function Projects() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -45,21 +44,16 @@ export default function Projects() {
             </div>
             <span className="card-pill-tag tag-blue">FINTECH &amp; ESCROW</span>
           </div>
-          <Link
-            href="/project-detail/?id=aman-pay"
-            className="project-img-frame"
-            aria-label="Aman Pay Engineering Details"
-          >
+          <div className="project-img-frame">
             <img
               src="https://i.postimg.cc/BnDrqNMf/Screenshot-From-2026-11-05-21-45-07.png"
               alt="Aman Pay Preview"
               className="project-img"
+              loading="eager"
             />
-          </Link>
+          </div>
           <div className="project-card-info">
-            <h3 className="project-title">
-              <Link href="/project-detail/?id=aman-pay">Aman Pay</Link>
-            </h3>
+            <h3 className="project-title">Aman Pay</h3>
             <div className="project-tags-row">
               <span className="tech-pill pill-white">Next.js</span>
               <span className="tech-pill pill-cyan">React</span>
@@ -67,9 +61,6 @@ export default function Projects() {
               <span className="tech-pill pill-yellow">Escrow</span>
             </div>
             <div className="project-actions-row">
-              <Link href="/project-detail/?id=aman-pay" className="card-btn btn-spec">
-                Detail ↗
-              </Link>
               <a
                 href="https://aman-pay-lake.vercel.app/"
                 target="_blank"
@@ -93,32 +84,24 @@ export default function Projects() {
         {/* Project 2: Event Hub */}
         <article className="project-card card--lime is-visible">
           <div className="card-header-bar justify-end">
-            <span className="card-pill-tag tag-yellow">WEB APPLICATION</span>
+            <span className="card-pill-tag tag-yellow">WEBSITE</span>
           </div>
-          <Link
-            href="/project-detail/?id=event-hub"
-            className="project-img-frame"
-            aria-label="Event Hub Engineering Details"
-          >
+          <div className="project-img-frame">
             <img
-              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80"
+              src="https://i.postimg.cc/RFCDdvzB/Screenshot-From-2026-11-14-17-51-48.png"
               alt="Event Hub Preview"
               className="project-img"
+              loading="lazy"
             />
-          </Link>
+          </div>
           <div className="project-card-info">
-            <h3 className="project-title">
-              <Link href="/project-detail/?id=event-hub">Event Hub</Link>
-            </h3>
+            <h3 className="project-title">Event Hub</h3>
             <div className="project-tags-row">
               <span className="tech-pill pill-orange">Next.js</span>
               <span className="tech-pill pill-yellow">Node.js</span>
               <span className="tech-pill pill-white">PostgreSQL</span>
             </div>
             <div className="project-actions-row">
-              <Link href="/project-detail/?id=event-hub" className="card-btn btn-spec">
-                Detail ↗
-              </Link>
               <a
                 href="https://github.com/petrosgDev/event-hub"
                 target="_blank"
@@ -136,21 +119,16 @@ export default function Projects() {
           <div className="card-header-bar">
             <span className="card-pill-tag tag-white">WELLNESS PLATFORM</span>
           </div>
-          <Link
-            href="/project-detail/?id=ethio-massage"
-            className="project-img-frame"
-            aria-label="Ethio Massage Engineering Details"
-          >
+          <div className="project-img-frame">
             <img
               src="https://i.postimg.cc/HxJQdCxL/Screenshot-From-2026-11-05-17-58-09.png"
               alt="Ethio Massage Preview"
               className="project-img"
+              loading="lazy"
             />
-          </Link>
+          </div>
           <div className="project-card-info">
-            <h3 className="project-title">
-              <Link href="/project-detail/?id=ethio-massage">Ethio Massage</Link>
-            </h3>
+            <h3 className="project-title">Ethio Massage</h3>
             <div className="project-tags-row">
               <span className="tech-pill pill-pink">Next.js</span>
               <span className="tech-pill pill-cyan">React</span>
@@ -158,9 +136,6 @@ export default function Projects() {
               <span className="tech-pill pill-white">Tailwind</span>
             </div>
             <div className="project-actions-row">
-              <Link href="/project-detail/?id=ethio-massage" className="card-btn btn-spec">
-                Detail ↗
-              </Link>
               <a
                 href="https://ethio-massage.vercel.app"
                 target="_blank"
@@ -186,30 +161,22 @@ export default function Projects() {
           <div className="card-header-bar justify-end">
             <span className="card-pill-tag tag-live">LIVE PREVIEW</span>
           </div>
-          <Link
-            href="/project-detail/?id=wende-dubai"
-            className="project-img-frame"
-            aria-label="Wende Dubai Interior Design Engineering Details"
-          >
+          <div className="project-img-frame">
             <img
               src="https://i.postimg.cc/YqCSTzyb/Screenshot-From-2026-11-05-19-06-18.png"
               alt="Wende Dubai Interior Design Preview"
               className="project-img"
+              loading="lazy"
             />
-          </Link>
+          </div>
           <div className="project-card-info">
-            <h3 className="project-title">
-              <Link href="/project-detail/?id=wende-dubai">Wende Dubai Interior Design</Link>
-            </h3>
+            <h3 className="project-title">Wende Dubai Interior Design</h3>
             <div className="project-tags-row">
               <span className="tech-pill pill-lime">HTML5/CSS3</span>
               <span className="tech-pill pill-peach">JavaScript</span>
               <span className="tech-pill pill-white">Swiper.js</span>
             </div>
             <div className="project-actions-row">
-              <Link href="/project-detail/?id=wende-dubai" className="card-btn btn-spec">
-                Detail ↗
-              </Link>
               <a
                 href="https://wende-dubai-interiordesign.vercel.app/"
                 target="_blank"
@@ -232,30 +199,22 @@ export default function Projects() {
             </div>
             <span className="card-pill-tag tag-cyan">CAFÉ &amp; DINING</span>
           </div>
-          <Link
-            href="/project-detail/?id=raman-caffe"
-            className="project-img-frame"
-            aria-label="Raman Caffe Engineering Details"
-          >
+          <div className="project-img-frame">
             <img
               src="https://i.postimg.cc/bvbhMmcH/Screenshot-From-2026-11-05-20-10-44.png"
               alt="Raman Caffe Preview"
               className="project-img"
+              loading="lazy"
             />
-          </Link>
+          </div>
           <div className="project-card-info">
-            <h3 className="project-title">
-              <Link href="/project-detail/?id=raman-caffe">Raman Caffe</Link>
-            </h3>
+            <h3 className="project-title">Raman Caffe</h3>
             <div className="project-tags-row">
               <span className="tech-pill pill-white">HTML5/CSS3</span>
               <span className="tech-pill pill-peach">JavaScript</span>
               <span className="tech-pill pill-yellow">UI/UX</span>
             </div>
             <div className="project-actions-row">
-              <Link href="/project-detail/?id=raman-caffe" className="card-btn btn-spec">
-                Detail ↗
-              </Link>
               <a
                 href="https://github.com/petrosgDev"
                 target="_blank"
@@ -273,30 +232,22 @@ export default function Projects() {
           <div className="card-header-bar justify-end">
             <span className="card-pill-tag tag-orange">CAMPUS MANAGEMENT</span>
           </div>
-          <Link
-            href="/project-detail/?id=nexus-campus"
-            className="project-img-frame"
-            aria-label="Nexus Campus Services Engineering Details"
-          >
+          <div className="project-img-frame">
             <img
               src="https://i.postimg.cc/TwR490R3/photo-2026-06-30-17-07-10.jpg"
               alt="Nexus Campus Services Preview"
               className="project-img"
+              loading="lazy"
             />
-          </Link>
+          </div>
           <div className="project-card-info">
-            <h3 className="project-title">
-              <Link href="/project-detail/?id=nexus-campus">Nexus Campus Services (NCS)</Link>
-            </h3>
+            <h3 className="project-title">Nexus Campus Services (NCS)</h3>
             <div className="project-tags-row">
               <span className="tech-pill pill-orange">Java</span>
               <span className="tech-pill pill-peach">JavaFX</span>
               <span className="tech-pill pill-white">MySQL</span>
             </div>
             <div className="project-actions-row">
-              <Link href="/project-detail/?id=nexus-campus" className="card-btn btn-spec">
-                Detail ↗
-              </Link>
               <a
                 href="https://github.com/petrosgDev"
                 target="_blank"
@@ -314,30 +265,22 @@ export default function Projects() {
           <div className="card-header-bar">
             <span className="card-pill-tag tag-white">MOBILE APP</span>
           </div>
-          <Link
-            href="/project-detail/?id=my-app"
-            className="project-img-frame"
-            aria-label="MyApp Mobile Engineering Details"
-          >
+          <div className="project-img-frame">
             <img
               src="https://i.postimg.cc/GhjMzNMW/Screenshot-From-2026-11-05-21-51-29.png"
               alt="MyApp Preview"
               className="project-img"
+              loading="lazy"
             />
-          </Link>
+          </div>
           <div className="project-card-info">
-            <h3 className="project-title">
-              <Link href="/project-detail/?id=my-app">MyApp</Link>
-            </h3>
+            <h3 className="project-title">MyApp</h3>
             <div className="project-tags-row">
               <span className="tech-pill pill-cyan">React Native</span>
               <span className="tech-pill pill-white">Expo</span>
               <span className="tech-pill pill-lime">Offline-First</span>
             </div>
             <div className="project-actions-row">
-              <Link href="/project-detail/?id=my-app" className="card-btn btn-spec">
-                Detail ↗
-              </Link>
               <a
                 href="https://github.com/petrosgDev"
                 target="_blank"
@@ -355,30 +298,22 @@ export default function Projects() {
           <div className="card-header-bar justify-end">
             <span className="card-pill-tag tag-live">DESKTOP SYSTEM</span>
           </div>
-          <Link
-            href="/project-detail/?id=banking-system"
-            className="project-img-frame"
-            aria-label="Banking System Engineering Details"
-          >
+          <div className="project-img-frame">
             <img
               src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80"
               alt="Banking System Preview"
               className="project-img"
+              loading="lazy"
             />
-          </Link>
+          </div>
           <div className="project-card-info">
-            <h3 className="project-title">
-              <Link href="/project-detail/?id=banking-system">Banking System</Link>
-            </h3>
+            <h3 className="project-title">Banking System</h3>
             <div className="project-tags-row">
               <span className="tech-pill pill-peach">C++</span>
               <span className="tech-pill pill-white">MySQL</span>
               <span className="tech-pill pill-lime">Qt</span>
             </div>
             <div className="project-actions-row">
-              <Link href="/project-detail/?id=banking-system" className="card-btn btn-spec">
-                Detail ↗
-              </Link>
               <a
                 href="https://github.com/petrosgDev/banking_system"
                 target="_blank"
@@ -440,4 +375,3 @@ export default function Projects() {
     </section>
   );
 }
-

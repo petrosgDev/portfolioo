@@ -97,11 +97,6 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <Link href="/project-detail/?id=aman-pay" onClick={closeMenu}>
-                Project Details ↗
-              </Link>
-            </li>
-            <li>
               <a
                 href="#contact"
                 className={activeNav === 'contact' ? 'active' : ''}
