@@ -26,8 +26,8 @@ export default function Hero() {
         <img
           src="/assets/images/portrait-transparent.png"
           alt="Portrait of Petros Geto"
-          width="450"
-          height="450"
+          width="350"
+          height="350"
         />
       </div>
     </section>
